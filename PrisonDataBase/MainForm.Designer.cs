@@ -64,6 +64,8 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formulationOfQueriesstatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.jailerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jailerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.JailerTableAdapter();
@@ -90,8 +92,6 @@
             this.prisonerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox_Search = new System.Windows.Forms.TextBox();
-            this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.formulationOfQueriesstatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button_PrintReport = new System.Windows.Forms.Button();
             this.comboBox_Cells = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -274,7 +274,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // databaseToolStripMenuItem
@@ -377,23 +377,38 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.editToolStripMenuItem.Text = "Add";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // statisticsToolStripMenuItem
+            // 
+            this.statisticsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formulationOfQueriesstatisticsToolStripMenuItem});
+            this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.statisticsToolStripMenuItem.Text = "Statistics";
+            // 
+            // formulationOfQueriesstatisticsToolStripMenuItem
+            // 
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Name = "formulationOfQueriesstatisticsToolStripMenuItem";
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Size = new System.Drawing.Size(312, 26);
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Text = "Formulation of queries (statistics)";
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Click += new System.EventHandler(this.formulationOfQueriesstatisticsToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -557,21 +572,6 @@
             this.textBox_Search.TabIndex = 0;
             this.textBox_Search.TextChanged += new System.EventHandler(this.textBox_Search_TextChanged);
             // 
-            // statisticsToolStripMenuItem
-            // 
-            this.statisticsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.formulationOfQueriesstatisticsToolStripMenuItem});
-            this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.statisticsToolStripMenuItem.Text = "Statistics";
-            // 
-            // formulationOfQueriesstatisticsToolStripMenuItem
-            // 
-            this.formulationOfQueriesstatisticsToolStripMenuItem.Name = "formulationOfQueriesstatisticsToolStripMenuItem";
-            this.formulationOfQueriesstatisticsToolStripMenuItem.Size = new System.Drawing.Size(312, 26);
-            this.formulationOfQueriesstatisticsToolStripMenuItem.Text = "Formulation of queries (statistics)";
-            this.formulationOfQueriesstatisticsToolStripMenuItem.Click += new System.EventHandler(this.formulationOfQueriesstatisticsToolStripMenuItem_Click);
-            // 
             // button_PrintReport
             // 
             this.button_PrintReport.Location = new System.Drawing.Point(471, 456);
@@ -584,11 +584,14 @@
             // 
             // comboBox_Cells
             // 
+            this.comboBox_Cells.DataSource = this.cellBindingSource;
+            this.comboBox_Cells.DisplayMember = "cell_number";
             this.comboBox_Cells.FormattingEnabled = true;
             this.comboBox_Cells.Location = new System.Drawing.Point(344, 465);
             this.comboBox_Cells.Name = "comboBox_Cells";
             this.comboBox_Cells.Size = new System.Drawing.Size(121, 24);
             this.comboBox_Cells.TabIndex = 7;
+            this.comboBox_Cells.ValueMember = "cell_id";
             // 
             // MainForm
             // 

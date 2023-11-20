@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,24 +23,6 @@ namespace PrisonDataBase
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //string query = "UPDATE Prisoner " +
-            //   "SET person_id = Person.SNP " +
-            //   "FROM Prisoner " +
-            //   "JOIN Person ON Prisoner.person_id = Person.person_id";
-
-            //using (SqlConnection connection = new SqlConnection(ConnectionString))
-            //{
-            //    connection.Open();
-
-            //    // Используйте SqlDataAdapter для выполнения запроса и заполнения DataTable
-            //    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
-            //    DataTable dataTable = new DataTable();
-            //    dataAdapter.Fill(dataTable);
-
-            //    // Установка источника данных для DataGridView
-            //    dataGridView1.DataSource = dataTable;
-            //}
-
             this.prisonerTableAdapter.Fill(this.prisonDataBaseDataSet.Prisoner);
             this.visitorTableAdapter.Fill(this.prisonDataBaseDataSet.Visitor);
             this.visitTableAdapter.Fill(this.prisonDataBaseDataSet.Visit);  
@@ -53,6 +36,8 @@ namespace PrisonDataBase
             this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
 
             dataGridView1.AutoGenerateColumns = true;
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,6 +64,8 @@ namespace PrisonDataBase
             bindingNavigator1.BindingSource = personBindingSource;
             dataGridView1.DataSource = personBindingSource;
             label1.Text = "Persons";
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void prisonerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,6 +93,8 @@ namespace PrisonDataBase
                 bindingNavigator1.BindingSource = prisonerBindingSource;
                 dataGridView1.DataSource = prisonerBindingSource;
             }
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void jailerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,6 +102,8 @@ namespace PrisonDataBase
             bindingNavigator1.BindingSource = jailerBindingSource;
             dataGridView1.DataSource = jailerBindingSource;
             label1.Text = "Jailers";
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void jailerOnShiftToolStripMenuItem_Click(object sender, EventArgs e)
@@ -140,6 +131,8 @@ namespace PrisonDataBase
                 bindingNavigator1.BindingSource = jaileronshiftBindingSource;
                 dataGridView1.DataSource = jaileronshiftBindingSource;
             }
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void cellToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,6 +140,8 @@ namespace PrisonDataBase
             bindingNavigator1.BindingSource = cellBindingSource;
             dataGridView1.DataSource = cellBindingSource;
             label1.Text = "Cells";
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void visitorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,6 +149,8 @@ namespace PrisonDataBase
             bindingNavigator1.BindingSource = visitorBindingSource;
             dataGridView1.DataSource = visitorBindingSource;
             label1.Text = "Visitors";
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void visitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -180,6 +177,8 @@ namespace PrisonDataBase
                 bindingNavigator1.BindingSource = visitBindingSource;
                 dataGridView1.DataSource = visitBindingSource;
             }
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void incidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,6 +186,8 @@ namespace PrisonDataBase
             bindingNavigator1.BindingSource = incidentBindingSource;
             dataGridView1.DataSource = incidentBindingSource;
             label1.Text = "Incidents";
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void comittedIncidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -212,6 +213,8 @@ namespace PrisonDataBase
                 bindingNavigator1.BindingSource = committedincidentBindingSource;
                 dataGridView1.DataSource = committedincidentBindingSource;
             }
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void participantsOfTheIncidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,6 +241,8 @@ namespace PrisonDataBase
                 bindingNavigator1.BindingSource = participantsoftheincidentBindingSource;
                 dataGridView1.DataSource = participantsoftheincidentBindingSource;
             }
+
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private bool edit;
@@ -424,29 +429,9 @@ namespace PrisonDataBase
             st.ShowDialog();
         }
 
-        private void FillComboBoxWithCellNumbers()
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                connection.Open();
-
-                string query = "SELECT DISTINCT cell_number FROM Cell";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        comboBox_Cells.Items.Add(reader["cell_number"]);
-                    }
-                }
-            }
-        }
-
         private void button_PrintReport_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
