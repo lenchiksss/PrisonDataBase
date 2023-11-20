@@ -94,6 +94,12 @@
             this.textBox_Search = new System.Windows.Forms.TextBox();
             this.button_PrintReport = new System.Windows.Forms.Button();
             this.comboBox_Cells = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.comboBox_Filtration = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button_PrintReport1 = new System.Windows.Forms.Button();
+            this.crossTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
@@ -152,7 +158,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(12, 469);
+            this.bindingNavigator1.Location = new System.Drawing.Point(12, 462);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -259,7 +265,7 @@
             this.statisticsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(812, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(812, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -289,7 +295,8 @@
             this.visitToolStripMenuItem,
             this.incidentToolStripMenuItem,
             this.comittedIncidentToolStripMenuItem,
-            this.participantsOfTheIncidentToolStripMenuItem});
+            this.participantsOfTheIncidentToolStripMenuItem,
+            this.crossTableToolStripMenuItem});
             this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
             this.databaseToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.databaseToolStripMenuItem.Text = "Database";
@@ -494,6 +501,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -507,7 +517,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(783, 235);
+            this.dataGridView1.Size = new System.Drawing.Size(783, 213);
             this.dataGridView1.TabIndex = 4;
             // 
             // personidDataGridViewTextBoxColumn
@@ -556,7 +566,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBox_Search);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 76);
+            this.groupBox1.Location = new System.Drawing.Point(12, 68);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(366, 75);
             this.groupBox1.TabIndex = 5;
@@ -574,7 +584,8 @@
             // 
             // button_PrintReport
             // 
-            this.button_PrintReport.Location = new System.Drawing.Point(471, 456);
+            this.button_PrintReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_PrintReport.Location = new System.Drawing.Point(471, 426);
             this.button_PrintReport.Name = "button_PrintReport";
             this.button_PrintReport.Size = new System.Drawing.Size(324, 40);
             this.button_PrintReport.TabIndex = 6;
@@ -584,20 +595,84 @@
             // 
             // comboBox_Cells
             // 
+            this.comboBox_Cells.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox_Cells.DataSource = this.cellBindingSource;
             this.comboBox_Cells.DisplayMember = "cell_number";
             this.comboBox_Cells.FormattingEnabled = true;
-            this.comboBox_Cells.Location = new System.Drawing.Point(344, 465);
+            this.comboBox_Cells.Location = new System.Drawing.Point(344, 435);
             this.comboBox_Cells.Name = "comboBox_Cells";
             this.comboBox_Cells.Size = new System.Drawing.Size(121, 24);
             this.comboBox_Cells.TabIndex = 7;
             this.comboBox_Cells.ValueMember = "cell_id";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(14, 160);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 18);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Sort by:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(79, 161);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(57, 20);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "SNP";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // comboBox_Filtration
+            // 
+            this.comboBox_Filtration.FormattingEnabled = true;
+            this.comboBox_Filtration.Location = new System.Drawing.Point(425, 103);
+            this.comboBox_Filtration.Name = "comboBox_Filtration";
+            this.comboBox_Filtration.Size = new System.Drawing.Size(186, 24);
+            this.comboBox_Filtration.TabIndex = 10;
+            this.comboBox_Filtration.SelectedIndexChanged += new System.EventHandler(this.comboBox_Filtration_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(422, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 18);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Filter by:";
+            // 
+            // button_PrintReport1
+            // 
+            this.button_PrintReport1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_PrintReport1.Location = new System.Drawing.Point(471, 472);
+            this.button_PrintReport1.Name = "button_PrintReport1";
+            this.button_PrintReport1.Size = new System.Drawing.Size(324, 46);
+            this.button_PrintReport1.TabIndex = 12;
+            this.button_PrintReport1.Text = "Print a report with information about jailers";
+            this.button_PrintReport1.UseVisualStyleBackColor = true;
+            this.button_PrintReport1.Click += new System.EventHandler(this.button_PrintReport1_Click);
+            // 
+            // crossTableToolStripMenuItem
+            // 
+            this.crossTableToolStripMenuItem.Name = "crossTableToolStripMenuItem";
+            this.crossTableToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.crossTableToolStripMenuItem.Text = "Cross Table";
+            this.crossTableToolStripMenuItem.Click += new System.EventHandler(this.crossTableToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 519);
+            this.ClientSize = new System.Drawing.Size(812, 530);
+            this.Controls.Add(this.button_PrintReport1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox_Filtration);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox_Cells);
             this.Controls.Add(this.button_PrintReport);
             this.Controls.Add(this.groupBox1);
@@ -700,6 +775,12 @@
         private System.Windows.Forms.ToolStripMenuItem formulationOfQueriesstatisticsToolStripMenuItem;
         private System.Windows.Forms.Button button_PrintReport;
         private System.Windows.Forms.ComboBox comboBox_Cells;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox comboBox_Filtration;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button_PrintReport1;
+        private System.Windows.Forms.ToolStripMenuItem crossTableToolStripMenuItem;
     }
 }
 

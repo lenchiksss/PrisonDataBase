@@ -51,8 +51,46 @@ namespace PrisonDataBase
             this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
         }
 
+        private bool IsAdult(DateTime birthDate)
+        {
+            int age = DateTime.Now.Year - birthDate.Year;
+            if (DateTime.Now.Month < birthDate.Month || (DateTime.Now.Month == birthDate.Month && DateTime.Now.Day < birthDate.Day))
+            {
+                age--;
+            }
+            return age >= 18;
+        }
+
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(textBox_SNP.Text))
+            {
+                MessageBox.Show("SNP cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (dateTimePicker_DateOfBirth.Value > DateTime.Now)
+            {
+                MessageBox.Show("Date of Birth cannot be in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!IsAdult(dateTimePicker_DateOfBirth.Value))
+            {
+                MessageBox.Show("Person must be 18 years or older.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
         private void button_OK_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput())
+            {
+                return;
+            }
+
             string gender = "";
             if (comboBox_Gender.SelectedIndex == 0)
             {

@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -50,8 +51,39 @@ namespace PrisonDataBase
             comboBox_CellNumber.SelectedValue = cellNumber;
         }
 
+        private bool ValidateInput()
+        {
+            string numberOfArticle = textBox_NumberOfArticle.Text.Trim();
+            Regex regex = new Regex(@"^(\d+(-\d+)?)$");
+
+            if (string.IsNullOrWhiteSpace(numberOfArticle))
+            {
+                MessageBox.Show("Number of Article cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!regex.IsMatch(numberOfArticle))
+            {
+                MessageBox.Show("Invalid format for Number of Article. It should contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (dateTimePicker_ReleaseDate.Value < dateTimePicker_IncarcerationDate.Value)
+            {
+                MessageBox.Show("Release Date cannot be earlier than Incarceration Date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
         private void button_OK_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput())
+            {
+                return;
+            }
+
             if (edit)
             {
                 prisonerTableAdapter.UpdateQuery(dateTimePicker_IncarcerationDate.Value.ToString("yyyy-MM-dd"),
