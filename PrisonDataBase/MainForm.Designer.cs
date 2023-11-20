@@ -83,8 +83,17 @@
             this.visitorTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.VisitorTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.personidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sNPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateofbirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisonerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.prisonerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox_Search = new System.Windows.Forms.TextBox();
+            this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formulationOfQueriesstatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button_PrintReport = new System.Windows.Forms.Button();
+            this.comboBox_Cells = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
@@ -101,6 +110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bindingSource1
@@ -142,7 +152,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(12, 414);
+            this.bindingNavigator1.Location = new System.Drawing.Point(12, 469);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -205,6 +215,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -244,10 +255,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.databaseToolStripMenuItem,
-            this.actionsToolStripMenuItem});
+            this.actionsToolStripMenuItem,
+            this.statisticsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(812, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -262,7 +274,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // databaseToolStripMenuItem
@@ -365,21 +377,21 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.editToolStripMenuItem.Text = "Add";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -470,13 +482,17 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.personidDataGridViewTextBoxColumn});
+            this.personidDataGridViewTextBoxColumn,
+            this.sNPDataGridViewTextBoxColumn,
+            this.dateofbirthDataGridViewTextBoxColumn,
+            this.genderDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.personBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 72);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 194);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(775, 320);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(783, 235);
             this.dataGridView1.TabIndex = 4;
             // 
             // personidDataGridViewTextBoxColumn
@@ -488,6 +504,30 @@
             this.personidDataGridViewTextBoxColumn.ReadOnly = true;
             this.personidDataGridViewTextBoxColumn.Width = 125;
             // 
+            // sNPDataGridViewTextBoxColumn
+            // 
+            this.sNPDataGridViewTextBoxColumn.DataPropertyName = "SNP";
+            this.sNPDataGridViewTextBoxColumn.HeaderText = "SNP";
+            this.sNPDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.sNPDataGridViewTextBoxColumn.Name = "sNPDataGridViewTextBoxColumn";
+            this.sNPDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dateofbirthDataGridViewTextBoxColumn
+            // 
+            this.dateofbirthDataGridViewTextBoxColumn.DataPropertyName = "date_of_birth";
+            this.dateofbirthDataGridViewTextBoxColumn.HeaderText = "date_of_birth";
+            this.dateofbirthDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateofbirthDataGridViewTextBoxColumn.Name = "dateofbirthDataGridViewTextBoxColumn";
+            this.dateofbirthDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "gender";
+            this.genderDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            this.genderDataGridViewTextBoxColumn.Width = 125;
+            // 
             // prisonerBindingSource
             // 
             this.prisonerBindingSource.DataMember = "Prisoner";
@@ -497,11 +537,67 @@
             // 
             this.prisonerTableAdapter.ClearBeforeFill = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox_Search);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 76);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(366, 75);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // textBox_Search
+            // 
+            this.textBox_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Search.Location = new System.Drawing.Point(7, 35);
+            this.textBox_Search.Name = "textBox_Search";
+            this.textBox_Search.Size = new System.Drawing.Size(353, 24);
+            this.textBox_Search.TabIndex = 0;
+            this.textBox_Search.TextChanged += new System.EventHandler(this.textBox_Search_TextChanged);
+            // 
+            // statisticsToolStripMenuItem
+            // 
+            this.statisticsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formulationOfQueriesstatisticsToolStripMenuItem});
+            this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.statisticsToolStripMenuItem.Text = "Statistics";
+            // 
+            // formulationOfQueriesstatisticsToolStripMenuItem
+            // 
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Name = "formulationOfQueriesstatisticsToolStripMenuItem";
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Size = new System.Drawing.Size(312, 26);
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Text = "Formulation of queries (statistics)";
+            this.formulationOfQueriesstatisticsToolStripMenuItem.Click += new System.EventHandler(this.formulationOfQueriesstatisticsToolStripMenuItem_Click);
+            // 
+            // button_PrintReport
+            // 
+            this.button_PrintReport.Location = new System.Drawing.Point(471, 456);
+            this.button_PrintReport.Name = "button_PrintReport";
+            this.button_PrintReport.Size = new System.Drawing.Size(324, 40);
+            this.button_PrintReport.TabIndex = 6;
+            this.button_PrintReport.Text = "Print a report with information about cells";
+            this.button_PrintReport.UseVisualStyleBackColor = true;
+            this.button_PrintReport.Click += new System.EventHandler(this.button_PrintReport_Click);
+            // 
+            // comboBox_Cells
+            // 
+            this.comboBox_Cells.FormattingEnabled = true;
+            this.comboBox_Cells.Location = new System.Drawing.Point(344, 465);
+            this.comboBox_Cells.Name = "comboBox_Cells";
+            this.comboBox_Cells.Size = new System.Drawing.Size(121, 24);
+            this.comboBox_Cells.TabIndex = 7;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 456);
+            this.ClientSize = new System.Drawing.Size(812, 519);
+            this.Controls.Add(this.comboBox_Cells);
+            this.Controls.Add(this.button_PrintReport);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bindingNavigator1);
@@ -528,6 +624,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -587,9 +685,18 @@
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personidDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource prisonerBindingSource;
         private PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter prisonerTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sNPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateofbirthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox_Search;
+        private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formulationOfQueriesstatisticsToolStripMenuItem;
+        private System.Windows.Forms.Button button_PrintReport;
+        private System.Windows.Forms.ComboBox comboBox_Cells;
     }
 }
 

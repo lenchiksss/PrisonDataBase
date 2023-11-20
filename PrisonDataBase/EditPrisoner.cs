@@ -30,9 +30,9 @@ namespace PrisonDataBase
 
         private void EditPrisoner_Load(object sender, EventArgs e)
         {
-            this.prisonerTableAdapter.Fill(this.prisonDataBaseDataSet.Prisoner);
-            this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
-            this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
+            //this.prisonerTableAdapter.Fill(this.prisonDataBaseDataSet.Prisoner);
+            //this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
+            //this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
         }
 
         public EditPrisoner(int id, DateTime incarcerationDate, DateTime releaseDate, string numberOfArticle, string personSNP, int cellNumber)

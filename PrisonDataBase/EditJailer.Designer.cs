@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button_CANCEL = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,7 +47,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.numericUpDown_Salary = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.prisonDataBaseDataSet = new PrisonDataBase.PrisonDataBaseDataSet();
+            this.jailerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.JailerTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Salary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // button_CANCEL
@@ -66,6 +72,7 @@
             this.button_OK.TabIndex = 17;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // label1
             // 
@@ -196,6 +203,11 @@
             // numericUpDown_Salary
             // 
             this.numericUpDown_Salary.Location = new System.Drawing.Point(171, 345);
+            this.numericUpDown_Salary.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numericUpDown_Salary.Name = "numericUpDown_Salary";
             this.numericUpDown_Salary.Size = new System.Drawing.Size(237, 22);
             this.numericUpDown_Salary.TabIndex = 32;
@@ -209,6 +221,20 @@
             this.label9.Size = new System.Drawing.Size(18, 20);
             this.label9.TabIndex = 33;
             this.label9.Text = "₴";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "Jailer";
+            this.bindingSource1.DataSource = this.prisonDataBaseDataSet;
+            // 
+            // prisonDataBaseDataSet
+            // 
+            this.prisonDataBaseDataSet.DataSetName = "PrisonDataBaseDataSet";
+            this.prisonDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // jailerTableAdapter
+            // 
+            this.jailerTableAdapter.ClearBeforeFill = true;
             // 
             // EditJailer
             // 
@@ -235,7 +261,10 @@
             this.Controls.Add(this.label1);
             this.Name = "EditJailer";
             this.Text = "Edit Jailer";
+            this.Load += new System.EventHandler(this.EditJailer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Salary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,5 +290,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numericUpDown_Salary;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private PrisonDataBaseDataSet prisonDataBaseDataSet;
+        private PrisonDataBaseDataSetTableAdapters.JailerTableAdapter jailerTableAdapter;
     }
 }
