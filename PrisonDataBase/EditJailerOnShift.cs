@@ -48,17 +48,27 @@ namespace PrisonDataBase
         {
             if (edit)
             {
-                jailer_on_shiftTableAdapter.UpdateQuery(dateTimePicker_ShiftDate.Value.ToString("yyyy-MM-dd"),
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    jailer_on_shiftTableAdapter.UpdateQuery(dateTimePicker_ShiftDate.Value.ToString("yyyy-MM-dd"),
                           Convert.ToInt32(comboBox_SNP.SelectedValue),
                           Convert.ToInt32(comboBox_CellNumber.SelectedValue),
                           id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
+
             else
             {
                 jailer_on_shiftTableAdapter.InsertQuery(dateTimePicker_ShiftDate.Value.ToString("yyyy-MM-dd"),
                           Convert.ToInt32(comboBox_SNP.SelectedValue),
                           Convert.ToInt32(comboBox_CellNumber.SelectedValue));
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

@@ -43,15 +43,25 @@ namespace PrisonDataBase
         {
             if (edit)
             {
-                incidentTableAdapter.UpdateQuery(textBox_Type.Text,
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    incidentTableAdapter.UpdateQuery(textBox_Type.Text,
                           textBox_Description.Text,
                           id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
+
             else
             {
                 incidentTableAdapter.InsertQuery(textBox_Type.Text,
                           textBox_Description.Text);
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

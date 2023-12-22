@@ -86,13 +86,20 @@ namespace PrisonDataBase
 
             if (edit)
             {
-                prisonerTableAdapter.UpdateQuery(dateTimePicker_IncarcerationDate.Value.ToString("yyyy-MM-dd"),
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    prisonerTableAdapter.UpdateQuery(dateTimePicker_IncarcerationDate.Value.ToString("yyyy-MM-dd"),
                           dateTimePicker_ReleaseDate.Value.ToString("yyyy-MM-dd"),
                           textBox_NumberOfArticle.Text,
                           Convert.ToInt32(comboBox_SNP.SelectedValue),
                           Convert.ToInt32(comboBox_CellNumber.SelectedValue),
                           id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+
             else
             {
                 prisonerTableAdapter.InsertQuery(dateTimePicker_IncarcerationDate.Value.ToString("yyyy-MM-dd"),
@@ -100,7 +107,9 @@ namespace PrisonDataBase
                           textBox_NumberOfArticle.Text,
                           Convert.ToInt32(comboBox_SNP.SelectedValue),
                           Convert.ToInt32(comboBox_CellNumber.SelectedValue));
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

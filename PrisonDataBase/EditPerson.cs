@@ -103,17 +103,27 @@ namespace PrisonDataBase
 
             if (edit)
             {
-                personTableAdapter.UpdateQuery(textBox_SNP.Text,
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    personTableAdapter.UpdateQuery(textBox_SNP.Text,
                           dateTimePicker_DateOfBirth.Value.ToString("yyyy-MM-dd"),
                           gender,
                           id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
+
             else
             {
                 personTableAdapter.InsertQuery(textBox_SNP.Text,
                           dateTimePicker_DateOfBirth.Value.ToString("yyyy-MM-dd"),
                           gender);
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

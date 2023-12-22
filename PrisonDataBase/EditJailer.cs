@@ -118,18 +118,26 @@ namespace PrisonDataBase
 
             if (edit)
             {
-                if (decimal.TryParse(numericUpDown_Salary.Text, out decimal salaryValue))
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
                 {
-                    jailerTableAdapter.UpdateQuery(textBox_SNP.Text,
-                        dateTimePicker_DateOfBirth.Value.ToString("yyyy-MM-dd"),
-                        gender,
-                        dateTimePicker_HireDate.Value.ToString("yyyy-MM-dd"),
-                        textBox_PhoneNumber.Text,
-                        textBox_Email.Text,
-                        salaryValue,
-                        id);
+                    if (decimal.TryParse(numericUpDown_Salary.Text, out decimal salaryValue))
+                    {
+                        jailerTableAdapter.UpdateQuery(textBox_SNP.Text,
+                            dateTimePicker_DateOfBirth.Value.ToString("yyyy-MM-dd"),
+                            gender,
+                            dateTimePicker_HireDate.Value.ToString("yyyy-MM-dd"),
+                            textBox_PhoneNumber.Text,
+                            textBox_Email.Text,
+                            salaryValue,
+                            id);
+                        MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+
             }
+
             else
             {
                 if (decimal.TryParse(numericUpDown_Salary.Text, out decimal salaryValue))
@@ -142,7 +150,9 @@ namespace PrisonDataBase
                         textBox_Email.Text,
                         salaryValue);
                 }
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

@@ -84,6 +84,11 @@ namespace PrisonDataBase
             dateTimePicker2.Value = DateTime.Now;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -102,6 +107,8 @@ namespace PrisonDataBase
 
         private void personToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = personBindingSource;
             dataGridView1.DataSource = personBindingSource;
             label1.Text = "Persons";
@@ -158,10 +165,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void prisonerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = prisonerBindingSource;
             dataGridView1.DataSource = prisonerBindingSource;
             label1.Text = "Prisoners";
@@ -187,11 +201,11 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            dataGridView1.Columns["SNP"].DisplayIndex = 0;
-            dataGridView1.Columns["incarceration_date"].DisplayIndex = 1;
-            dataGridView1.Columns["release_date"].DisplayIndex = 2;
-            dataGridView1.Columns["number_of_article"].DisplayIndex = 3;
-            dataGridView1.Columns["cell_number"].DisplayIndex = 3;
+            //dataGridView1.Columns["SNP"].DisplayIndex = 0;
+            //dataGridView1.Columns["incarceration_date"].DisplayIndex = 1;
+            //dataGridView1.Columns["release_date"].DisplayIndex = 2;
+            //dataGridView1.Columns["number_of_article"].DisplayIndex = 3;
+            //dataGridView1.Columns["cell_number"].DisplayIndex = 3;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -237,10 +251,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void jailerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = jailerBindingSource;
             dataGridView1.DataSource = jailerBindingSource;
             label1.Text = "Jailers";
@@ -296,10 +317,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = true;
         }
 
         private void jailerOnShiftToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = jaileronshiftBindingSource;
             dataGridView1.DataSource = jaileronshiftBindingSource;
             label1.Text = "Jailers on shift";
@@ -323,12 +351,12 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = jaileronshiftBindingSource;
             }
 
-            //dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
 
-            dataGridView1.Columns["SNP"].DisplayIndex = 0;
-            dataGridView1.Columns["cell_number"].DisplayIndex = 1;
-            dataGridView1.Columns["shift_date"].DisplayIndex = 2;
-            dataGridView1.Columns["jailer_on_shift_id"].Visible = false;
+            //dataGridView1.Columns["SNP"].DisplayIndex = 0;
+            //dataGridView1.Columns["cell_number"].DisplayIndex = 1;
+            //dataGridView1.Columns["shift_date"].DisplayIndex = 2;
+            //dataGridView1.Columns["jailer_on_shift_id"].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -375,10 +403,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void cellToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = cellBindingSource;
             dataGridView1.DataSource = cellBindingSource;
             label1.Text = "Cells";
@@ -426,10 +461,18 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = true;
+            comboBox_Cells.Visible = true;
+            button_PrintReport.Visible = true;
+            button_PrintReport1.Visible = false;
+
         }
 
         private void visitorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = visitorBindingSource;
             dataGridView1.DataSource = visitorBindingSource;
             label1.Text = "Visitors";
@@ -471,10 +514,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void visitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = visitBindingSource;
             dataGridView1.DataSource = visitBindingSource;
             label1.Text = "Visits";
@@ -498,14 +548,14 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = visitBindingSource;
             }
 
-            dataGridView1.Columns["Visitors_SNP"].DisplayIndex = 0;
-            dataGridView1.Columns["Prisoners_SNP"].DisplayIndex = 1;
-            dataGridView1.Columns["relation_to_the_prisoner"].DisplayIndex = 2;
-            dataGridView1.Columns["date_of_visit"].DisplayIndex = 3;
-            dataGridView1.Columns["time_of_visit"].DisplayIndex = 4;
-            dataGridView1.Columns["visit_id"].Visible = false;
+            //dataGridView1.Columns["Visitors_SNP"].DisplayIndex = 0;
+            //dataGridView1.Columns["Prisoners_SNP"].DisplayIndex = 1;
+            //dataGridView1.Columns["relation_to_the_prisoner"].DisplayIndex = 2;
+            //dataGridView1.Columns["date_of_visit"].DisplayIndex = 3;
+            //dataGridView1.Columns["time_of_visit"].DisplayIndex = 4;
+            //dataGridView1.Columns["visit_id"].Visible = false;
 
-            //dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -557,10 +607,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void incidentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = incidentBindingSource;
             dataGridView1.DataSource = incidentBindingSource;
             label1.Text = "Incidents";
@@ -602,10 +659,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void comittedIncidentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = committedincidentBindingSource;
             dataGridView1.DataSource = committedincidentBindingSource;
             label1.Text = "Committed incidents";
@@ -673,10 +737,17 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private void participantsOfTheIncidentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            search = "";
+
             bindingNavigator1.BindingSource = participantsoftheincidentBindingSource;
             dataGridView1.DataSource = participantsoftheincidentBindingSource;
             label1.Text = "Participants of the incidents";
@@ -736,6 +807,11 @@ namespace PrisonDataBase
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
         }
 
         private bool edit;
@@ -1051,75 +1127,413 @@ namespace PrisonDataBase
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //if (bindingNavigator1.BindingSource == personBindingSource)
+            //{
+            //    personTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+            //    personTableAdapter.Fill(prisonDataBaseDataSet.Person);
+            //    prisonDataBaseDataSet.AcceptChanges();
+            //}
+
+            //if (bindingNavigator1.BindingSource == prisonerBindingSource)
+            //{
+            //    prisonerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+            //    prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
+            //    prisonDataBaseDataSet.AcceptChanges();
+            //}
+
+            //if (bindingNavigator1.BindingSource == jailerBindingSource)
+            //{
+            //    jailerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+            //    jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
+            //    prisonDataBaseDataSet.AcceptChanges();
+            //}
+
             if (bindingNavigator1.BindingSource == personBindingSource)
             {
-                personTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                personTableAdapter.Fill(prisonDataBaseDataSet.Person);
-                prisonDataBaseDataSet.AcceptChanges();
+                int personId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                if (!HasDependenciesForPerson(personId))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        personTableAdapter.DeleteQuery(personId);
+                        personTableAdapter.Fill(prisonDataBaseDataSet.Person);
+                        prisonDataBaseDataSet.AcceptChanges();
+
+                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This person record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
-            if (bindingNavigator1.BindingSource == prisonerBindingSource)
+            else if (bindingNavigator1.BindingSource == prisonerBindingSource)
             {
-                prisonerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
-                prisonDataBaseDataSet.AcceptChanges();
+                int prisonerId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                if (!HasDependenciesForPrisoner(prisonerId))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        prisonerTableAdapter.DeleteQuery(prisonerId);
+                        prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
+                        prisonDataBaseDataSet.AcceptChanges();
+
+                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This prisoner record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
-            if (bindingNavigator1.BindingSource == jailerBindingSource)
+            else if (bindingNavigator1.BindingSource == jailerBindingSource)
             {
-                jailerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
-                prisonDataBaseDataSet.AcceptChanges();
+                int jailerId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                if (!HasDependenciesForJailer(jailerId))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        jailerTableAdapter.DeleteQuery(jailerId);
+                        jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
+                        prisonDataBaseDataSet.AcceptChanges();
+
+                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This jailer record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             if (bindingNavigator1.BindingSource == cellBindingSource)
             {
-                cellTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
-                prisonDataBaseDataSet.AcceptChanges();
+                int cellId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                if (!HasDependenciesForCell(cellId))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        cellTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
+                        prisonDataBaseDataSet.AcceptChanges();
+
+                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This cell record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }  
             }
 
             if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
             {
-                jailer_on_shiftTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
-                prisonDataBaseDataSet.AcceptChanges();
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    jailer_on_shiftTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                    jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
+                    prisonDataBaseDataSet.AcceptChanges();
+
+                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
             if (bindingNavigator1.BindingSource == visitBindingSource)
             {
-                visitTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
-                prisonDataBaseDataSet.AcceptChanges();
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    visitTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                    visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
+                    prisonDataBaseDataSet.AcceptChanges();
+
+                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
             if (bindingNavigator1.BindingSource == visitorBindingSource)
             {
-                visitorTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
-                prisonDataBaseDataSet.AcceptChanges();
+                int visitorId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                if (!HasDependenciesForVisitor(visitorId))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        visitorTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
+                        prisonDataBaseDataSet.AcceptChanges();
+
+                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This visitor record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
             {
-                participants_of_the_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
-                prisonDataBaseDataSet.AcceptChanges();
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    participants_of_the_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                    participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
+                    prisonDataBaseDataSet.AcceptChanges();
+
+                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
             if (bindingNavigator1.BindingSource == committedincidentBindingSource)
             {
-                committed_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
-                prisonDataBaseDataSet.AcceptChanges();
+                int committedincidentId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                if (!HasDependenciesForCommittedIncident(committedincidentId))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        committed_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
+                        prisonDataBaseDataSet.AcceptChanges();
+
+                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This committed incident record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
             }
 
             if (bindingNavigator1.BindingSource == incidentBindingSource)
             {
-                incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
-                prisonDataBaseDataSet.AcceptChanges();
+                int incidentId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                if (!HasDependenciesForIncident(incidentId))
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
+                        prisonDataBaseDataSet.AcceptChanges();
+
+                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This incident record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private bool HasDependenciesForPerson(int personId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = "SELECT COUNT(*) FROM Prisoner WHERE person_id = @personId";
+                    command.Parameters.AddWithValue("@personId", personId);
+
+                    int prisonerCount = (int)command.ExecuteScalar();
+
+                    if (prisonerCount > 0)
+                    {
+                        return true; 
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool HasDependenciesForPrisoner(int prisonerId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString)) 
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = "SELECT COUNT(*) FROM Visit WHERE prisoner_id = @prisonerId";
+                    command.Parameters.AddWithValue("@prisonerId", prisonerId);
+
+                    int visitCount = (int)command.ExecuteScalar();
+
+                    command.CommandText = "SELECT COUNT(*) FROM Participants_of_the_incident WHERE prisoner_id = @prisonerId";
+                    int participantsCount = (int)command.ExecuteScalar();
+
+                    if (visitCount > 0 || participantsCount > 0)
+                    {
+                        return true; 
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool HasDependenciesForJailer(int jailerId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = "SELECT COUNT(*) FROM Jailer_on_shift WHERE jailer_id = @jailerId";
+                    command.Parameters.AddWithValue("@jailerId", jailerId);
+
+                    int jailerOnShiftCount = (int)command.ExecuteScalar();
+
+                    command.CommandText = "SELECT COUNT(*) FROM Cell WHERE jailer_id = @jailerId";
+                    int cellCount = (int)command.ExecuteScalar();
+
+                    if (jailerOnShiftCount > 0 || cellCount > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool HasDependenciesForCell(int cellId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = "SELECT COUNT(*) FROM Prisoner WHERE cell_id = @cellId";
+                    command.Parameters.AddWithValue("@cellId", cellId);
+
+                    int prisonerCount = (int)command.ExecuteScalar();
+
+                    command.CommandText = "SELECT COUNT(*) FROM Jailer_on_shift WHERE cell_id = @cellId";
+                    int jailerOnShiftCount = (int)command.ExecuteScalar();
+
+                    if (prisonerCount > 0 || jailerOnShiftCount > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool HasDependenciesForVisitor(int visitorId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = "SELECT COUNT(*) FROM Visit WHERE visitor_id = @visitorId";
+                    command.Parameters.AddWithValue("@visitorId", visitorId);
+
+                    int visitorCount = (int)command.ExecuteScalar();
+
+                    if (visitorCount > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool HasDependenciesForCommittedIncident(int committedIncidentId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = "SELECT COUNT(*) FROM Participants_of_the_incident WHERE committed_incident_id = @committedIncidentId";
+                    command.Parameters.AddWithValue("@committedIncidentId", committedIncidentId);
+
+                    int committedIncidentCount = (int)command.ExecuteScalar();
+
+                    if (committedIncidentCount > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool HasDependenciesForIncident(int incidentId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = "SELECT COUNT(*) FROM Committed_incident WHERE incident_id = @incidentId";
+                    command.Parameters.AddWithValue("@incidentId", incidentId);
+
+                    int incidentCount = (int)command.ExecuteScalar();
+
+                    if (incidentCount > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private string search = "";
@@ -1402,10 +1816,10 @@ namespace PrisonDataBase
         private void button_PrintReport1_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
+            {
+                connection.Open();
 
-                    string sqlQuery = @"
+                string sqlQuery = @"
                         SELECT
                             jailer_id,
                             SNP,
@@ -1420,23 +1834,23 @@ namespace PrisonDataBase
                         ";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
-                    {
+                {
                     using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                    {
+                        saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
+                        saveFileDialog.Title = "Save Text File";
+                        saveFileDialog.FileName = "";
+
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
                         {
-                            saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
-                            saveFileDialog.Title = "Save Text File";
-                            saveFileDialog.FileName = "";
+                            string filePath = saveFileDialog.FileName;
 
-                            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                            using (StreamWriter writer = new StreamWriter(filePath))
                             {
-                                string filePath = saveFileDialog.FileName;
-
-                                using (StreamWriter writer = new StreamWriter(filePath))
+                                using (SqlDataReader reader = command.ExecuteReader())
                                 {
-                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    while (reader.Read())
                                     {
-                                        while (reader.Read())
-                                        {
                                         writer.WriteLine($"ID: {reader["jailer_id"]}");
                                         writer.WriteLine($"  - SNP: {reader["SNP"]}");
                                         writer.WriteLine($"  - Date of Birth: {reader["date_of_birth"]}");
@@ -1447,15 +1861,15 @@ namespace PrisonDataBase
                                         writer.WriteLine($"  - Salary: {reader["salary"]}");
                                         writer.WriteLine();
                                     }
-                                    }
+                                }
                                 writer.WriteLine($"\r\nDocument Save Date: {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\r\n");
                             }
 
-                                MessageBox.Show("The text file was successfully created!");
-                            }
+                            MessageBox.Show("The text file was successfully created!");
                         }
                     }
                 }
+            }
         }
 
         private void visitsOfPrisonersToolStripMenuItem_Click(object sender, EventArgs e)

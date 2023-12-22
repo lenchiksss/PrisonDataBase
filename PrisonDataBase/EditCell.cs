@@ -130,19 +130,28 @@ namespace PrisonDataBase
 
             if (edit)
             {
-                cellTableAdapter.UpdateQuery(Convert.ToInt32(numericUpDown_cellNumber.Value),
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    cellTableAdapter.UpdateQuery(Convert.ToInt32(numericUpDown_cellNumber.Value),
                               Convert.ToInt32(numericUpDown_Capacity.Value),
                               Convert.ToInt32(numericUpDown_CurrentOccupancy.Value),
                               type,
                               id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+
             else
             {
                 cellTableAdapter.InsertQuery(Convert.ToInt32(numericUpDown_cellNumber.Value),
                               Convert.ToInt32(numericUpDown_Capacity.Value),
                               Convert.ToInt32(numericUpDown_CurrentOccupancy.Value),
                               type);
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

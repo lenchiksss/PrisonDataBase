@@ -69,17 +69,27 @@ namespace PrisonDataBase
 
             if (edit)
             {
-                committed_incidentTableAdapter.UpdateQuery(dateTimePicker_IncidentDate.Value.ToString("yyyy-MM-dd"),
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    committed_incidentTableAdapter.UpdateQuery(dateTimePicker_IncidentDate.Value.ToString("yyyy-MM-dd"),
                           textBox_TimeOfIncident.Text,
                           Convert.ToInt32(comboBox_Type.SelectedValue),
                           id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
+
             else
             {
                 committed_incidentTableAdapter.InsertQuery(dateTimePicker_IncidentDate.Value.ToString("yyyy-MM-dd"),
                           textBox_TimeOfIncident.Text,
                           Convert.ToInt32(comboBox_Type.SelectedValue));
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

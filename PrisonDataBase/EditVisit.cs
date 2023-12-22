@@ -109,13 +109,21 @@ namespace PrisonDataBase
 
             if (edit)
             {
-                visitTableAdapter.UpdateQuery(relation,
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    visitTableAdapter.UpdateQuery(relation,
                           dateTimePicker_DateOfVisit.Value.ToString("yyyy-MM-dd"),
                           textBox_TimeOfVisit.Text,
                           Convert.ToInt32(comboBox_VisitorsSNP.SelectedValue),
                           Convert.ToInt32(comboBox_PrisonersSNP.SelectedValue),
                           id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
+
             else
             {
                 visitTableAdapter.InsertQuery(relation,
@@ -123,7 +131,9 @@ namespace PrisonDataBase
                           textBox_TimeOfVisit.Text,
                           Convert.ToInt32(comboBox_VisitorsSNP.SelectedValue),
                           Convert.ToInt32(comboBox_PrisonersSNP.SelectedValue));
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 

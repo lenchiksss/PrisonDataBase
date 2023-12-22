@@ -27,8 +27,8 @@ namespace PrisonDataBase
         private void EditParticipantsOfTheIncident_Load(object sender, EventArgs e)
         {
             this.participants_of_the_incidentTableAdapter.Fill(this.prisonDataBaseDataSet.Participants_of_the_incident);
-            //this.incidentTableAdapter.Fill(this.prisonDataBaseDataSet.Incident);
-            //this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
+            this.incidentTableAdapter.Fill(this.prisonDataBaseDataSet.Incident);
+            this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
         }
 
         public EditParticipantsOfTheIncident(int id, string incident, string SNP)
@@ -47,15 +47,25 @@ namespace PrisonDataBase
         {
             if (edit)
             {
-                participants_of_the_incidentTableAdapter.UpdateQuery(Convert.ToInt32(comboBox_Incident.SelectedValue),
+                DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    participants_of_the_incidentTableAdapter.UpdateQuery(Convert.ToInt32(comboBox_Incident.SelectedValue),
                         Convert.ToInt32(comboBox_SNP.SelectedValue),
                         id);
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
+
             else
             {
                 participants_of_the_incidentTableAdapter.InsertQuery(Convert.ToInt32(comboBox_Incident.SelectedValue),
                         Convert.ToInt32(comboBox_SNP.SelectedValue));
+                MessageBox.Show("Record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             Close();
         }
 
