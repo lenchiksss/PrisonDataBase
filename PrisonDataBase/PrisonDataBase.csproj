@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
@@ -53,6 +55,18 @@
     <Compile Include="EditCell.Designer.cs">
       <DependentUpon>EditCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditCommittedIncident.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCommittedIncident.Designer.cs">
+      <DependentUpon>EditCommittedIncident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditIncident.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditIncident.Designer.cs">
+      <DependentUpon>EditIncident.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditJailer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +78,12 @@
     </Compile>
     <Compile Include="EditJailerOnShift.Designer.cs">
       <DependentUpon>EditJailerOnShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditParticipantsOfTheIncident.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditParticipantsOfTheIncident.Designer.cs">
+      <DependentUpon>EditParticipantsOfTheIncident.cs</DependentUpon>
     </Compile>
     <Compile Include="EditPerson.cs">
       <SubType>Form</SubType>
@@ -88,12 +108,6 @@
     </Compile>
     <Compile Include="EditVisitor.Designer.cs">
       <DependentUpon>EditVisitor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmailForm.Designer.cs">
-      <DependentUpon>EmailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -120,11 +134,20 @@
     <EmbeddedResource Include="EditCell.resx">
       <DependentUpon>EditCell.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditCommittedIncident.resx">
+      <DependentUpon>EditCommittedIncident.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditIncident.resx">
+      <DependentUpon>EditIncident.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditJailer.resx">
       <DependentUpon>EditJailer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditJailerOnShift.resx">
       <DependentUpon>EditJailerOnShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditParticipantsOfTheIncident.resx">
+      <DependentUpon>EditParticipantsOfTheIncident.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPerson.resx">
       <DependentUpon>EditPerson.cs</DependentUpon>
@@ -137,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditVisitor.resx">
       <DependentUpon>EditVisitor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailForm.resx">
-      <DependentUpon>EmailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

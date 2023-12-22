@@ -31,7 +31,7 @@ namespace PrisonDataBase
 
         private void EditPrisoner_Load(object sender, EventArgs e)
         {
-            //this.prisonerTableAdapter.Fill(this.prisonDataBaseDataSet.Prisoner);
+            this.prisonerTableAdapter.Fill(this.prisonDataBaseDataSet.Prisoner);
             //this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
             //this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
         }

@@ -150,5 +150,10 @@ namespace PrisonDataBase
         {
             this.jailerTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer);
         }
+
+        private void button_CANCEL_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

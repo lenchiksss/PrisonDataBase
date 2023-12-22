@@ -28,19 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_CellNumber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown_Capacity = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_CurrentOccupancy = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_cellType = new System.Windows.Forms.ComboBox();
             this.button_CANCEL = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
+            this.numericUpDown_cellNumber = new System.Windows.Forms.NumericUpDown();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.prisonDataBaseDataSet = new PrisonDataBase.PrisonDataBaseDataSet();
+            this.cellTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.CellTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Capacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentOccupancy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_cellNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -62,13 +69,6 @@
             this.label2.Size = new System.Drawing.Size(87, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Cell number";
-            // 
-            // textBox_CellNumber
-            // 
-            this.textBox_CellNumber.Location = new System.Drawing.Point(192, 52);
-            this.textBox_CellNumber.Name = "textBox_CellNumber";
-            this.textBox_CellNumber.Size = new System.Drawing.Size(230, 22);
-            this.textBox_CellNumber.TabIndex = 4;
             // 
             // label3
             // 
@@ -114,17 +114,17 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Cell type";
             // 
-            // comboBox1
+            // comboBox_cellType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_cellType.FormattingEnabled = true;
+            this.comboBox_cellType.Items.AddRange(new object[] {
             "Single",
             "Double",
             "Multiple"});
-            this.comboBox1.Location = new System.Drawing.Point(192, 193);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 24);
-            this.comboBox1.TabIndex = 10;
+            this.comboBox_cellType.Location = new System.Drawing.Point(192, 193);
+            this.comboBox_cellType.Name = "comboBox_cellType";
+            this.comboBox_cellType.Size = new System.Drawing.Size(230, 24);
+            this.comboBox_cellType.TabIndex = 10;
             // 
             // button_CANCEL
             // 
@@ -143,27 +143,58 @@
             this.button_OK.TabIndex = 14;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
+            // 
+            // numericUpDown_cellNumber
+            // 
+            this.numericUpDown_cellNumber.Location = new System.Drawing.Point(192, 56);
+            this.numericUpDown_cellNumber.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_cellNumber.Name = "numericUpDown_cellNumber";
+            this.numericUpDown_cellNumber.Size = new System.Drawing.Size(230, 22);
+            this.numericUpDown_cellNumber.TabIndex = 16;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "Cell";
+            this.bindingSource1.DataSource = this.prisonDataBaseDataSet;
+            // 
+            // prisonDataBaseDataSet
+            // 
+            this.prisonDataBaseDataSet.DataSetName = "PrisonDataBaseDataSet";
+            this.prisonDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cellTableAdapter
+            // 
+            this.cellTableAdapter.ClearBeforeFill = true;
             // 
             // EditCell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 305);
+            this.Controls.Add(this.numericUpDown_cellNumber);
             this.Controls.Add(this.button_CANCEL);
             this.Controls.Add(this.button_OK);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_cellType);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numericUpDown_CurrentOccupancy);
             this.Controls.Add(this.numericUpDown_Capacity);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox_CellNumber);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "EditCell";
             this.Text = "Edit Cell";
+            this.Load += new System.EventHandler(this.EditCell_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Capacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurrentOccupancy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_cellNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,14 +204,17 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_CellNumber;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericUpDown_Capacity;
         private System.Windows.Forms.NumericUpDown numericUpDown_CurrentOccupancy;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_cellType;
         private System.Windows.Forms.Button button_CANCEL;
         private System.Windows.Forms.Button button_OK;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private PrisonDataBaseDataSet prisonDataBaseDataSet;
+        private PrisonDataBaseDataSetTableAdapters.CellTableAdapter cellTableAdapter;
+        private System.Windows.Forms.NumericUpDown numericUpDown_cellNumber;
     }
 }

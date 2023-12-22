@@ -69,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(30, 52);
+            this.label2.Location = new System.Drawing.Point(30, 191);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 18);
             this.label2.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             // dateTimePicker_IncarcerationDate
             // 
-            this.dateTimePicker_IncarcerationDate.Location = new System.Drawing.Point(200, 52);
+            this.dateTimePicker_IncarcerationDate.Location = new System.Drawing.Point(200, 191);
             this.dateTimePicker_IncarcerationDate.Name = "dateTimePicker_IncarcerationDate";
             this.dateTimePicker_IncarcerationDate.Size = new System.Drawing.Size(223, 22);
             this.dateTimePicker_IncarcerationDate.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(61, 96);
+            this.label3.Location = new System.Drawing.Point(61, 235);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 18);
             this.label3.TabIndex = 4;
@@ -94,14 +94,14 @@
             // 
             // dateTimePicker_ReleaseDate
             // 
-            this.dateTimePicker_ReleaseDate.Location = new System.Drawing.Point(200, 96);
+            this.dateTimePicker_ReleaseDate.Location = new System.Drawing.Point(200, 235);
             this.dateTimePicker_ReleaseDate.Name = "dateTimePicker_ReleaseDate";
             this.dateTimePicker_ReleaseDate.Size = new System.Drawing.Size(223, 22);
             this.dateTimePicker_ReleaseDate.TabIndex = 5;
             // 
             // textBox_NumberOfArticle
             // 
-            this.textBox_NumberOfArticle.Location = new System.Drawing.Point(200, 136);
+            this.textBox_NumberOfArticle.Location = new System.Drawing.Point(200, 141);
             this.textBox_NumberOfArticle.Name = "textBox_NumberOfArticle";
             this.textBox_NumberOfArticle.Size = new System.Drawing.Size(223, 22);
             this.textBox_NumberOfArticle.TabIndex = 6;
@@ -110,7 +110,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(34, 140);
+            this.label4.Location = new System.Drawing.Point(34, 142);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 18);
             this.label4.TabIndex = 7;
@@ -120,7 +120,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(116, 187);
+            this.label5.Location = new System.Drawing.Point(116, 46);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 18);
             this.label5.TabIndex = 8;
@@ -131,7 +131,7 @@
             this.comboBox_SNP.DataSource = this.personBindingSource;
             this.comboBox_SNP.DisplayMember = "SNP";
             this.comboBox_SNP.FormattingEnabled = true;
-            this.comboBox_SNP.Location = new System.Drawing.Point(200, 187);
+            this.comboBox_SNP.Location = new System.Drawing.Point(200, 45);
             this.comboBox_SNP.Name = "comboBox_SNP";
             this.comboBox_SNP.Size = new System.Drawing.Size(223, 24);
             this.comboBox_SNP.TabIndex = 9;
@@ -155,7 +155,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(55, 234);
+            this.label6.Location = new System.Drawing.Point(68, 93);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 18);
             this.label6.TabIndex = 10;
@@ -166,7 +166,7 @@
             this.comboBox_CellNumber.DataSource = this.cellBindingSource;
             this.comboBox_CellNumber.DisplayMember = "cell_number";
             this.comboBox_CellNumber.FormattingEnabled = true;
-            this.comboBox_CellNumber.Location = new System.Drawing.Point(200, 233);
+            this.comboBox_CellNumber.Location = new System.Drawing.Point(200, 93);
             this.comboBox_CellNumber.Name = "comboBox_CellNumber";
             this.comboBox_CellNumber.Size = new System.Drawing.Size(223, 24);
             this.comboBox_CellNumber.TabIndex = 11;

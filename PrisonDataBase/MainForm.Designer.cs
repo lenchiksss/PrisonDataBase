@@ -66,6 +66,8 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formulationOfQueriesstatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitsOfPrisonersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.jailerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jailerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.JailerTableAdapter();
@@ -90,16 +92,28 @@
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prisonerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.prisonerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox_Search = new System.Windows.Forms.TextBox();
             this.button_PrintReport = new System.Windows.Forms.Button();
             this.comboBox_Cells = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label_Sort = new System.Windows.Forms.Label();
+            this.checkBox_Sort = new System.Windows.Forms.CheckBox();
             this.comboBox_Filtration = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label_Filter = new System.Windows.Forms.Label();
             this.button_PrintReport1 = new System.Windows.Forms.Button();
-            this.crossTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label_Search = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.checkBox_BirthdayDate = new System.Windows.Forms.CheckBox();
+            this.checkBox_ReleaseDate = new System.Windows.Forms.CheckBox();
+            this.checkBox_HireDate = new System.Windows.Forms.CheckBox();
+            this.checkBox_ShiftDate = new System.Windows.Forms.CheckBox();
+            this.checkBox_VisitDate = new System.Windows.Forms.CheckBox();
+            this.checkBox_CommittedIncidentDate = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
@@ -116,7 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bindingSource1
@@ -141,6 +154,7 @@
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.bindingNavigator1.BindingSource = this.personBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
@@ -158,7 +172,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(12, 462);
+            this.bindingNavigator1.Location = new System.Drawing.Point(12, 532);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -262,10 +276,11 @@
             this.fileToolStripMenuItem,
             this.databaseToolStripMenuItem,
             this.actionsToolStripMenuItem,
-            this.statisticsToolStripMenuItem});
+            this.statisticsToolStripMenuItem,
+            this.infoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(812, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1121, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -282,6 +297,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
             // databaseToolStripMenuItem
             // 
@@ -295,8 +311,7 @@
             this.visitToolStripMenuItem,
             this.incidentToolStripMenuItem,
             this.comittedIncidentToolStripMenuItem,
-            this.participantsOfTheIncidentToolStripMenuItem,
-            this.crossTableToolStripMenuItem});
+            this.participantsOfTheIncidentToolStripMenuItem});
             this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
             this.databaseToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.databaseToolStripMenuItem.Text = "Database";
@@ -417,6 +432,21 @@
             this.formulationOfQueriesstatisticsToolStripMenuItem.Text = "Formulation of queries (statistics)";
             this.formulationOfQueriesstatisticsToolStripMenuItem.Click += new System.EventHandler(this.formulationOfQueriesstatisticsToolStripMenuItem_Click);
             // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.visitsOfPrisonersToolStripMenuItem});
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.infoToolStripMenuItem.Text = "Info";
+            // 
+            // visitsOfPrisonersToolStripMenuItem
+            // 
+            this.visitsOfPrisonersToolStripMenuItem.Name = "visitsOfPrisonersToolStripMenuItem";
+            this.visitsOfPrisonersToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.visitsOfPrisonersToolStripMenuItem.Text = "Visits of prisoners";
+            this.visitsOfPrisonersToolStripMenuItem.Click += new System.EventHandler(this.visitsOfPrisonersToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -512,12 +542,12 @@
             this.dateofbirthDataGridViewTextBoxColumn,
             this.genderDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.personBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 194);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 212);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(783, 213);
+            this.dataGridView1.Size = new System.Drawing.Size(1092, 302);
             this.dataGridView1.TabIndex = 4;
             // 
             // personidDataGridViewTextBoxColumn
@@ -562,21 +592,10 @@
             // 
             this.prisonerTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox_Search);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 68);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(366, 75);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
-            // 
             // textBox_Search
             // 
             this.textBox_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Search.Location = new System.Drawing.Point(7, 35);
+            this.textBox_Search.Location = new System.Drawing.Point(17, 134);
             this.textBox_Search.Name = "textBox_Search";
             this.textBox_Search.Size = new System.Drawing.Size(353, 24);
             this.textBox_Search.TabIndex = 0;
@@ -585,9 +604,9 @@
             // button_PrintReport
             // 
             this.button_PrintReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_PrintReport.Location = new System.Drawing.Point(471, 426);
+            this.button_PrintReport.Location = new System.Drawing.Point(867, 99);
             this.button_PrintReport.Name = "button_PrintReport";
-            this.button_PrintReport.Size = new System.Drawing.Size(324, 40);
+            this.button_PrintReport.Size = new System.Drawing.Size(237, 45);
             this.button_PrintReport.TabIndex = 6;
             this.button_PrintReport.Text = "Print a report with information about cells";
             this.button_PrintReport.UseVisualStyleBackColor = true;
@@ -599,83 +618,230 @@
             this.comboBox_Cells.DataSource = this.cellBindingSource;
             this.comboBox_Cells.DisplayMember = "cell_number";
             this.comboBox_Cells.FormattingEnabled = true;
-            this.comboBox_Cells.Location = new System.Drawing.Point(344, 435);
+            this.comboBox_Cells.Location = new System.Drawing.Point(747, 99);
             this.comboBox_Cells.Name = "comboBox_Cells";
-            this.comboBox_Cells.Size = new System.Drawing.Size(121, 24);
+            this.comboBox_Cells.Size = new System.Drawing.Size(105, 24);
             this.comboBox_Cells.TabIndex = 7;
             this.comboBox_Cells.ValueMember = "cell_id";
             // 
-            // label2
+            // label_Sort
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(14, 160);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 18);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Sort by:";
+            this.label_Sort.AutoSize = true;
+            this.label_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Sort.Location = new System.Drawing.Point(14, 179);
+            this.label_Sort.Name = "label_Sort";
+            this.label_Sort.Size = new System.Drawing.Size(59, 18);
+            this.label_Sort.TabIndex = 8;
+            this.label_Sort.Text = "Sort by:";
             // 
-            // checkBox1
+            // checkBox_Sort
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(79, 161);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(57, 20);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "SNP";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox_Sort.AutoSize = true;
+            this.checkBox_Sort.Location = new System.Drawing.Point(79, 180);
+            this.checkBox_Sort.Name = "checkBox_Sort";
+            this.checkBox_Sort.Size = new System.Drawing.Size(57, 20);
+            this.checkBox_Sort.TabIndex = 9;
+            this.checkBox_Sort.Text = "SNP";
+            this.checkBox_Sort.UseVisualStyleBackColor = true;
+            this.checkBox_Sort.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // comboBox_Filtration
             // 
             this.comboBox_Filtration.FormattingEnabled = true;
-            this.comboBox_Filtration.Location = new System.Drawing.Point(425, 103);
+            this.comboBox_Filtration.Location = new System.Drawing.Point(405, 99);
             this.comboBox_Filtration.Name = "comboBox_Filtration";
-            this.comboBox_Filtration.Size = new System.Drawing.Size(186, 24);
+            this.comboBox_Filtration.Size = new System.Drawing.Size(136, 24);
             this.comboBox_Filtration.TabIndex = 10;
             this.comboBox_Filtration.SelectedIndexChanged += new System.EventHandler(this.comboBox_Filtration_SelectedIndexChanged);
             // 
-            // label3
+            // label_Filter
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(422, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 18);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Filter by:";
+            this.label_Filter.AutoSize = true;
+            this.label_Filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Filter.Location = new System.Drawing.Point(402, 73);
+            this.label_Filter.Name = "label_Filter";
+            this.label_Filter.Size = new System.Drawing.Size(63, 18);
+            this.label_Filter.TabIndex = 11;
+            this.label_Filter.Text = "Filter by:";
             // 
             // button_PrintReport1
             // 
             this.button_PrintReport1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_PrintReport1.Location = new System.Drawing.Point(471, 472);
+            this.button_PrintReport1.Location = new System.Drawing.Point(867, 150);
             this.button_PrintReport1.Name = "button_PrintReport1";
-            this.button_PrintReport1.Size = new System.Drawing.Size(324, 46);
+            this.button_PrintReport1.Size = new System.Drawing.Size(237, 50);
             this.button_PrintReport1.TabIndex = 12;
             this.button_PrintReport1.Text = "Print a report with information about jailers";
             this.button_PrintReport1.UseVisualStyleBackColor = true;
             this.button_PrintReport1.Click += new System.EventHandler(this.button_PrintReport1_Click);
             // 
-            // crossTableToolStripMenuItem
+            // label_Search
             // 
-            this.crossTableToolStripMenuItem.Name = "crossTableToolStripMenuItem";
-            this.crossTableToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
-            this.crossTableToolStripMenuItem.Text = "Cross Table";
-            this.crossTableToolStripMenuItem.Click += new System.EventHandler(this.crossTableToolStripMenuItem_Click);
+            this.label_Search.AutoSize = true;
+            this.label_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Search.Location = new System.Drawing.Point(14, 79);
+            this.label_Search.Name = "label_Search";
+            this.label_Search.Size = new System.Drawing.Size(78, 18);
+            this.label_Search.TabIndex = 13;
+            this.label_Search.Text = "Search by:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(108, 75);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(57, 20);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "SNP";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(108, 107);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(52, 20);
+            this.checkBox2.TabIndex = 15;
+            this.checkBox2.Text = "Cell";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(455, 131);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(104, 22);
+            this.dateTimePicker1.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(401, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 18);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "From:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(565, 133);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 18);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "To:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(601, 130);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(104, 22);
+            this.dateTimePicker2.TabIndex = 18;
+            // 
+            // checkBox_BirthdayDate
+            // 
+            this.checkBox_BirthdayDate.AutoSize = true;
+            this.checkBox_BirthdayDate.Location = new System.Drawing.Point(404, 161);
+            this.checkBox_BirthdayDate.Name = "checkBox_BirthdayDate";
+            this.checkBox_BirthdayDate.Size = new System.Drawing.Size(109, 20);
+            this.checkBox_BirthdayDate.TabIndex = 20;
+            this.checkBox_BirthdayDate.Text = "Filter by date:";
+            this.checkBox_BirthdayDate.UseVisualStyleBackColor = true;
+            this.checkBox_BirthdayDate.CheckedChanged += new System.EventHandler(this.checkBox_Date_CheckedChanged);
+            // 
+            // checkBox_ReleaseDate
+            // 
+            this.checkBox_ReleaseDate.AutoSize = true;
+            this.checkBox_ReleaseDate.Location = new System.Drawing.Point(519, 161);
+            this.checkBox_ReleaseDate.Name = "checkBox_ReleaseDate";
+            this.checkBox_ReleaseDate.Size = new System.Drawing.Size(109, 20);
+            this.checkBox_ReleaseDate.TabIndex = 21;
+            this.checkBox_ReleaseDate.Text = "Filter by date:";
+            this.checkBox_ReleaseDate.UseVisualStyleBackColor = true;
+            this.checkBox_ReleaseDate.CheckedChanged += new System.EventHandler(this.checkBox_ReleaseDate_CheckedChanged);
+            // 
+            // checkBox_HireDate
+            // 
+            this.checkBox_HireDate.AutoSize = true;
+            this.checkBox_HireDate.Location = new System.Drawing.Point(634, 160);
+            this.checkBox_HireDate.Name = "checkBox_HireDate";
+            this.checkBox_HireDate.Size = new System.Drawing.Size(109, 20);
+            this.checkBox_HireDate.TabIndex = 22;
+            this.checkBox_HireDate.Text = "Filter by date:";
+            this.checkBox_HireDate.UseVisualStyleBackColor = true;
+            this.checkBox_HireDate.CheckedChanged += new System.EventHandler(this.checkBox_HireDate_CheckedChanged);
+            // 
+            // checkBox_ShiftDate
+            // 
+            this.checkBox_ShiftDate.AutoSize = true;
+            this.checkBox_ShiftDate.Location = new System.Drawing.Point(404, 186);
+            this.checkBox_ShiftDate.Name = "checkBox_ShiftDate";
+            this.checkBox_ShiftDate.Size = new System.Drawing.Size(109, 20);
+            this.checkBox_ShiftDate.TabIndex = 23;
+            this.checkBox_ShiftDate.Text = "Filter by date:";
+            this.checkBox_ShiftDate.UseVisualStyleBackColor = true;
+            this.checkBox_ShiftDate.CheckedChanged += new System.EventHandler(this.checkBox_ShiftDate_CheckedChanged);
+            // 
+            // checkBox_VisitDate
+            // 
+            this.checkBox_VisitDate.AutoSize = true;
+            this.checkBox_VisitDate.Location = new System.Drawing.Point(519, 187);
+            this.checkBox_VisitDate.Name = "checkBox_VisitDate";
+            this.checkBox_VisitDate.Size = new System.Drawing.Size(109, 20);
+            this.checkBox_VisitDate.TabIndex = 24;
+            this.checkBox_VisitDate.Text = "Filter by date:";
+            this.checkBox_VisitDate.UseVisualStyleBackColor = true;
+            this.checkBox_VisitDate.CheckedChanged += new System.EventHandler(this.checkBox_VisitDate_CheckedChanged);
+            // 
+            // checkBox_CommittedIncidentDate
+            // 
+            this.checkBox_CommittedIncidentDate.AutoSize = true;
+            this.checkBox_CommittedIncidentDate.Location = new System.Drawing.Point(635, 187);
+            this.checkBox_CommittedIncidentDate.Name = "checkBox_CommittedIncidentDate";
+            this.checkBox_CommittedIncidentDate.Size = new System.Drawing.Size(109, 20);
+            this.checkBox_CommittedIncidentDate.TabIndex = 25;
+            this.checkBox_CommittedIncidentDate.Text = "Filter by date:";
+            this.checkBox_CommittedIncidentDate.UseVisualStyleBackColor = true;
+            this.checkBox_CommittedIncidentDate.CheckedChanged += new System.EventHandler(this.checkBox_CommittedIncidentDate_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(747, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(299, 18);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Select the needed camera to print the report:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 530);
-            this.Controls.Add(this.button_PrintReport1);
+            this.ClientSize = new System.Drawing.Size(1121, 577);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.checkBox_CommittedIncidentDate);
+            this.Controls.Add(this.checkBox_VisitDate);
+            this.Controls.Add(this.checkBox_ShiftDate);
+            this.Controls.Add(this.checkBox_HireDate);
+            this.Controls.Add(this.checkBox_ReleaseDate);
+            this.Controls.Add(this.checkBox_BirthdayDate);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox_Filtration);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label_Search);
+            this.Controls.Add(this.textBox_Search);
+            this.Controls.Add(this.button_PrintReport1);
+            this.Controls.Add(this.label_Filter);
+            this.Controls.Add(this.comboBox_Filtration);
+            this.Controls.Add(this.checkBox_Sort);
+            this.Controls.Add(this.label_Sort);
             this.Controls.Add(this.comboBox_Cells);
             this.Controls.Add(this.button_PrintReport);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bindingNavigator1);
@@ -702,8 +868,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,18 +933,32 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sNPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateofbirthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox_Search;
         private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formulationOfQueriesstatisticsToolStripMenuItem;
         private System.Windows.Forms.Button button_PrintReport;
         private System.Windows.Forms.ComboBox comboBox_Cells;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label_Sort;
+        private System.Windows.Forms.CheckBox checkBox_Sort;
         private System.Windows.Forms.ComboBox comboBox_Filtration;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label_Filter;
         private System.Windows.Forms.Button button_PrintReport1;
-        private System.Windows.Forms.ToolStripMenuItem crossTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visitsOfPrisonersToolStripMenuItem;
+        private System.Windows.Forms.Label label_Search;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.CheckBox checkBox_BirthdayDate;
+        private System.Windows.Forms.CheckBox checkBox_ReleaseDate;
+        private System.Windows.Forms.CheckBox checkBox_HireDate;
+        private System.Windows.Forms.CheckBox checkBox_ShiftDate;
+        private System.Windows.Forms.CheckBox checkBox_VisitDate;
+        private System.Windows.Forms.CheckBox checkBox_CommittedIncidentDate;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -47,9 +47,12 @@
             this.button_CANCEL = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
             this.textBox_TimeOfVisit = new System.Windows.Forms.TextBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.visitTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.VisitTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +73,7 @@
             "family",
             "colleague",
             "other"});
-            this.comboBox_RelationToThePrisoner.Location = new System.Drawing.Point(209, 50);
+            this.comboBox_RelationToThePrisoner.Location = new System.Drawing.Point(209, 150);
             this.comboBox_RelationToThePrisoner.Name = "comboBox_RelationToThePrisoner";
             this.comboBox_RelationToThePrisoner.Size = new System.Drawing.Size(223, 24);
             this.comboBox_RelationToThePrisoner.TabIndex = 3;
@@ -79,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(27, 51);
+            this.label2.Location = new System.Drawing.Point(27, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(161, 18);
             this.label2.TabIndex = 4;
@@ -89,7 +92,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(103, 93);
+            this.label3.Location = new System.Drawing.Point(103, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 18);
             this.label3.TabIndex = 5;
@@ -97,7 +100,7 @@
             // 
             // dateTimePicker_DateOfVisit
             // 
-            this.dateTimePicker_DateOfVisit.Location = new System.Drawing.Point(209, 89);
+            this.dateTimePicker_DateOfVisit.Location = new System.Drawing.Point(209, 203);
             this.dateTimePicker_DateOfVisit.Name = "dateTimePicker_DateOfVisit";
             this.dateTimePicker_DateOfVisit.Size = new System.Drawing.Size(223, 22);
             this.dateTimePicker_DateOfVisit.TabIndex = 6;
@@ -106,7 +109,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(101, 139);
+            this.label4.Location = new System.Drawing.Point(101, 250);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 18);
             this.label4.TabIndex = 7;
@@ -115,9 +118,9 @@
             // comboBox_PrisonersSNP
             // 
             this.comboBox_PrisonersSNP.DataSource = this.personBindingSource;
-            this.comboBox_PrisonersSNP.DisplayMember = "person_id";
+            this.comboBox_PrisonersSNP.DisplayMember = "SNP";
             this.comboBox_PrisonersSNP.FormattingEnabled = true;
-            this.comboBox_PrisonersSNP.Location = new System.Drawing.Point(209, 228);
+            this.comboBox_PrisonersSNP.Location = new System.Drawing.Point(209, 99);
             this.comboBox_PrisonersSNP.Name = "comboBox_PrisonersSNP";
             this.comboBox_PrisonersSNP.Size = new System.Drawing.Size(223, 24);
             this.comboBox_PrisonersSNP.TabIndex = 27;
@@ -137,7 +140,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(70, 228);
+            this.label6.Location = new System.Drawing.Point(78, 99);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 18);
             this.label6.TabIndex = 26;
@@ -148,7 +151,7 @@
             this.comboBox_VisitorsSNP.DataSource = this.visitorBindingSource;
             this.comboBox_VisitorsSNP.DisplayMember = "SNP";
             this.comboBox_VisitorsSNP.FormattingEnabled = true;
-            this.comboBox_VisitorsSNP.Location = new System.Drawing.Point(209, 179);
+            this.comboBox_VisitorsSNP.Location = new System.Drawing.Point(209, 48);
             this.comboBox_VisitorsSNP.Name = "comboBox_VisitorsSNP";
             this.comboBox_VisitorsSNP.Size = new System.Drawing.Size(223, 24);
             this.comboBox_VisitorsSNP.TabIndex = 25;
@@ -163,7 +166,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(93, 185);
+            this.label5.Location = new System.Drawing.Point(93, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 18);
             this.label5.TabIndex = 24;
@@ -179,28 +182,39 @@
             // 
             // button_CANCEL
             // 
-            this.button_CANCEL.Location = new System.Drawing.Point(278, 279);
+            this.button_CANCEL.Location = new System.Drawing.Point(278, 291);
             this.button_CANCEL.Name = "button_CANCEL";
             this.button_CANCEL.Size = new System.Drawing.Size(123, 36);
             this.button_CANCEL.TabIndex = 29;
             this.button_CANCEL.Text = "CANCEL";
             this.button_CANCEL.UseVisualStyleBackColor = true;
+            this.button_CANCEL.Click += new System.EventHandler(this.button_CANCEL_Click);
             // 
             // button_OK
             // 
-            this.button_OK.Location = new System.Drawing.Point(58, 279);
+            this.button_OK.Location = new System.Drawing.Point(56, 291);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(123, 36);
             this.button_OK.TabIndex = 28;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // textBox_TimeOfVisit
             // 
-            this.textBox_TimeOfVisit.Location = new System.Drawing.Point(209, 134);
+            this.textBox_TimeOfVisit.Location = new System.Drawing.Point(209, 250);
             this.textBox_TimeOfVisit.Name = "textBox_TimeOfVisit";
             this.textBox_TimeOfVisit.Size = new System.Drawing.Size(223, 22);
             this.textBox_TimeOfVisit.TabIndex = 30;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "Visit";
+            this.bindingSource1.DataSource = this.prisonDataBaseDataSet;
+            // 
+            // visitTableAdapter
+            // 
+            this.visitTableAdapter.ClearBeforeFill = true;
             // 
             // EditVisit
             // 
@@ -226,6 +240,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +266,7 @@
         private System.Windows.Forms.Button button_CANCEL;
         private System.Windows.Forms.Button button_OK;
         private System.Windows.Forms.TextBox textBox_TimeOfVisit;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private PrisonDataBaseDataSetTableAdapters.VisitTableAdapter visitTableAdapter;
     }
 }

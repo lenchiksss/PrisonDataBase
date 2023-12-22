@@ -57,16 +57,17 @@
             // 
             // button_CANCEL
             // 
-            this.button_CANCEL.Location = new System.Drawing.Point(301, 403);
+            this.button_CANCEL.Location = new System.Drawing.Point(301, 381);
             this.button_CANCEL.Name = "button_CANCEL";
             this.button_CANCEL.Size = new System.Drawing.Size(123, 36);
             this.button_CANCEL.TabIndex = 18;
             this.button_CANCEL.Text = "CANCEL";
             this.button_CANCEL.UseVisualStyleBackColor = true;
+            this.button_CANCEL.Click += new System.EventHandler(this.button_CANCEL_Click);
             // 
             // button_OK
             // 
-            this.button_OK.Location = new System.Drawing.Point(53, 403);
+            this.button_OK.Location = new System.Drawing.Point(53, 381);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(123, 36);
             this.button_OK.TabIndex = 17;
@@ -78,7 +79,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(34, 15);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 20);
             this.label1.TabIndex = 16;
@@ -90,7 +91,7 @@
             this.comboBox_Gender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.comboBox_Gender.Location = new System.Drawing.Point(171, 149);
+            this.comboBox_Gender.Location = new System.Drawing.Point(171, 127);
             this.comboBox_Gender.Name = "comboBox_Gender";
             this.comboBox_Gender.Size = new System.Drawing.Size(253, 24);
             this.comboBox_Gender.TabIndex = 24;
@@ -99,7 +100,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(69, 155);
+            this.label4.Location = new System.Drawing.Point(69, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 18);
             this.label4.TabIndex = 23;
@@ -109,7 +110,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(38, 108);
+            this.label3.Location = new System.Drawing.Point(38, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 18);
             this.label3.TabIndex = 22;
@@ -117,14 +118,14 @@
             // 
             // dateTimePicker_DateOfBirth
             // 
-            this.dateTimePicker_DateOfBirth.Location = new System.Drawing.Point(171, 108);
+            this.dateTimePicker_DateOfBirth.Location = new System.Drawing.Point(171, 86);
             this.dateTimePicker_DateOfBirth.Name = "dateTimePicker_DateOfBirth";
             this.dateTimePicker_DateOfBirth.Size = new System.Drawing.Size(253, 22);
             this.dateTimePicker_DateOfBirth.TabIndex = 21;
             // 
             // textBox_SNP
             // 
-            this.textBox_SNP.Location = new System.Drawing.Point(171, 62);
+            this.textBox_SNP.Location = new System.Drawing.Point(171, 40);
             this.textBox_SNP.Name = "textBox_SNP";
             this.textBox_SNP.Size = new System.Drawing.Size(253, 22);
             this.textBox_SNP.TabIndex = 20;
@@ -133,7 +134,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(87, 66);
+            this.label2.Location = new System.Drawing.Point(87, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 18);
             this.label2.TabIndex = 19;
@@ -141,7 +142,7 @@
             // 
             // dateTimePicker_HireDate
             // 
-            this.dateTimePicker_HireDate.Location = new System.Drawing.Point(171, 198);
+            this.dateTimePicker_HireDate.Location = new System.Drawing.Point(171, 176);
             this.dateTimePicker_HireDate.Name = "dateTimePicker_HireDate";
             this.dateTimePicker_HireDate.Size = new System.Drawing.Size(253, 22);
             this.dateTimePicker_HireDate.TabIndex = 25;
@@ -150,7 +151,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(59, 202);
+            this.label5.Location = new System.Drawing.Point(59, 180);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 18);
             this.label5.TabIndex = 26;
@@ -160,7 +161,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(21, 249);
+            this.label6.Location = new System.Drawing.Point(21, 227);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 18);
             this.label6.TabIndex = 27;
@@ -168,14 +169,14 @@
             // 
             // textBox_PhoneNumber
             // 
-            this.textBox_PhoneNumber.Location = new System.Drawing.Point(171, 249);
+            this.textBox_PhoneNumber.Location = new System.Drawing.Point(171, 227);
             this.textBox_PhoneNumber.Name = "textBox_PhoneNumber";
             this.textBox_PhoneNumber.Size = new System.Drawing.Size(253, 22);
             this.textBox_PhoneNumber.TabIndex = 28;
             // 
             // textBox_Email
             // 
-            this.textBox_Email.Location = new System.Drawing.Point(171, 296);
+            this.textBox_Email.Location = new System.Drawing.Point(171, 274);
             this.textBox_Email.Name = "textBox_Email";
             this.textBox_Email.Size = new System.Drawing.Size(253, 22);
             this.textBox_Email.TabIndex = 29;
@@ -184,7 +185,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(81, 300);
+            this.label7.Location = new System.Drawing.Point(81, 278);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 18);
             this.label7.TabIndex = 30;
@@ -194,7 +195,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(77, 345);
+            this.label8.Location = new System.Drawing.Point(77, 323);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 18);
             this.label8.TabIndex = 31;
@@ -202,7 +203,7 @@
             // 
             // numericUpDown_Salary
             // 
-            this.numericUpDown_Salary.Location = new System.Drawing.Point(171, 345);
+            this.numericUpDown_Salary.Location = new System.Drawing.Point(171, 323);
             this.numericUpDown_Salary.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -216,7 +217,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(414, 347);
+            this.label9.Location = new System.Drawing.Point(414, 325);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(18, 20);
             this.label9.TabIndex = 33;
@@ -240,7 +241,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 465);
+            this.ClientSize = new System.Drawing.Size(464, 435);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.numericUpDown_Salary);
             this.Controls.Add(this.label8);

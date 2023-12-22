@@ -6,9 +6,12 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PrisonDataBase
 {
@@ -39,16 +42,48 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
+            label_Filter.Visible = true;
+            comboBox_Filtration.Visible = true;
+
+            label_Filter.Text = "Filter by Gender and Date of birth:";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            label2.Visible = true;
+            label3.Visible = true;
+            dateTimePicker1.Visible = true;
+            dateTimePicker2.Visible = true;
+            checkBox_BirthdayDate.Visible = true;
+
             List<string> genderList = new List<string> { "male", "female", "all" };
             comboBox_Filtration.DataSource = genderList;
             comboBox_Filtration.SelectedIndex = 2;
 
             comboBox_Filtration.SelectedIndexChanged += new EventHandler(comboBox_Filtration_SelectedIndexChanged);
-        }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            label_Search.Text = "Search by Person's SNP:";
+
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            //textBox_Search.Location = new Point(17, 105);
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -73,17 +108,56 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = true;
-            label2.Visible = true;
+            checkBox_Sort.Visible = true;
+            label_Sort.Visible = true;
 
             comboBox_Filtration.Visible = true;
-            label3.Visible = true;
+            label_Filter.Visible = true;
 
             List<string> genderList = new List<string> { "male", "female", "all" };
             comboBox_Filtration.DataSource = genderList;
             comboBox_Filtration.SelectedIndex = 2;
 
             comboBox_Filtration.SelectedIndexChanged += new EventHandler(comboBox_Filtration_SelectedIndexChanged);
+
+            label_Search.Text = "Search by Person's SNP:";
+
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label_Filter.Text = "Filter by Gender and Date of birth:";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            label2.Visible = true;
+            label3.Visible = true;
+            dateTimePicker1.Visible = true;
+            dateTimePicker2.Visible = true;
+            checkBox_BirthdayDate.Visible = true;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void prisonerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -94,8 +168,7 @@ namespace PrisonDataBase
 
             string query = @"
                 SELECT Prisoner.prisoner_id,
-                Prisoner.incarceration_date, Prisoner.release_date, Prisoner.number_of_article,
-                Person.SNP, Cell.cell_number
+                Person.SNP, Prisoner.incarceration_date, Prisoner.release_date, Prisoner.number_of_article, Cell.cell_number
                 FROM Prisoner
                 LEFT JOIN Person ON Prisoner.person_id = Person.person_id
                 LEFT JOIN Cell ON Prisoner.cell_id = Cell.cell_id
@@ -114,11 +187,56 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = false;
-            label2.Visible = false;
+            dataGridView1.Columns["SNP"].DisplayIndex = 0;
+            dataGridView1.Columns["incarceration_date"].DisplayIndex = 1;
+            dataGridView1.Columns["release_date"].DisplayIndex = 2;
+            dataGridView1.Columns["number_of_article"].DisplayIndex = 3;
+            dataGridView1.Columns["cell_number"].DisplayIndex = 3;
+
+            checkBox_Sort.Visible = false;
+            label_Sort.Visible = false;
 
             comboBox_Filtration.Visible = false;
-            label3.Visible = false;
+            label_Filter.Visible = false;
+
+            label_Search.Text = "Search by:";
+            checkBox1.Visible = true;
+            checkBox2.Visible = true;
+
+            label_Filter.Visible = true;
+            label_Filter.Text = "Filter by Release date:";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            label2.Visible = true;
+            label3.Visible = true;
+            dateTimePicker1.Visible = true;
+            dateTimePicker2.Visible = true;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = true;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void jailerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,17 +247,55 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = true;
-            label2.Visible = true;
+            checkBox_Sort.Visible = true;
+            label_Sort.Visible = true;
 
             comboBox_Filtration.Visible = true;
-            label3.Visible = true;
+            label_Filter.Visible = true;
 
             List<string> genderList = new List<string> { "male", "female", "all" };
             comboBox_Filtration.DataSource = genderList;
             comboBox_Filtration.SelectedIndex = 2;
 
             comboBox_Filtration.SelectedIndexChanged += new EventHandler(comboBox_Filtration_SelectedIndexChanged);
+
+            label_Search.Text = "Search by Jailer's SNP:";
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label_Filter.Text = "Filter by Gender and Hire date:";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            label2.Visible = true;
+            label3.Visible = true;
+            dateTimePicker1.Visible = true;
+            dateTimePicker2.Visible = true;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = true;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void jailerOnShiftToolStripMenuItem_Click(object sender, EventArgs e)
@@ -150,8 +306,7 @@ namespace PrisonDataBase
 
             string query = @"
                 SELECT Jailer_on_shift.jailer_on_shift_id,
-                Jailer_on_shift.shift_date,
-                Jailer.SNP, Cell.cell_number
+                Jailer.SNP, Cell.cell_number, Jailer_on_shift.shift_date
                 FROM Jailer_on_shift
                 LEFT JOIN Jailer ON Jailer_on_shift.jailer_id = Jailer.jailer_id
                 LEFT JOIN Cell ON Jailer_on_shift.cell_id = Cell.cell_id
@@ -168,13 +323,58 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = jaileronshiftBindingSource;
             }
 
-            dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = false;
-            label2.Visible = false;
+            dataGridView1.Columns["SNP"].DisplayIndex = 0;
+            dataGridView1.Columns["cell_number"].DisplayIndex = 1;
+            dataGridView1.Columns["shift_date"].DisplayIndex = 2;
+            dataGridView1.Columns["jailer_on_shift_id"].Visible = false;
+
+            checkBox_Sort.Visible = false;
+            label_Sort.Visible = false;
 
             comboBox_Filtration.Visible = false;
-            label3.Visible = false;
+
+            label_Search.Text = "Search by:";
+            checkBox1.Visible = true;
+
+            checkBox2.Text = "Cell";
+            checkBox2.Visible = true;
+
+            label_Filter.Visible = true;
+            label_Filter.Text = "Filter by Shift date:";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            label2.Visible = true;
+            label3.Visible = true;
+            dateTimePicker1.Visible = true;
+            dateTimePicker2.Visible = true;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = true;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void cellToolStripMenuItem_Click(object sender, EventArgs e)
@@ -185,17 +385,47 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = false;
-            label2.Visible = false;
+            checkBox_Sort.Visible = false;
+            label_Sort.Visible = false;
 
             comboBox_Filtration.Visible = true;
-            label3.Visible = true;
+            label_Filter.Visible = true;
+            label_Filter.Text = "Filter by Cell type:";
 
-            List<string> genderList = new List<string> { "single", "double", "multiple", "all" };
-            comboBox_Filtration.DataSource = genderList;
+            List<string> typeList = new List<string> { "single", "double", "multiple", "all" };
+            comboBox_Filtration.DataSource = typeList;
             comboBox_Filtration.SelectedIndex = 3;
 
             comboBox_Filtration.SelectedIndexChanged += new EventHandler(comboBox_Filtration_SelectedIndexChanged);
+
+            label_Search.Text = "Search by Cell number:";
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label2.Visible = false;
+            label3.Visible = false;
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void visitorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -206,11 +436,41 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = true;
-            label2.Visible = true;
+            checkBox_Sort.Visible = true;
+            label_Sort.Visible = true;
 
             comboBox_Filtration.Visible = false;
+            label_Filter.Visible = false;
+
+            label_Search.Text = "Search by Visitor's SNP:";
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label_Filter.Visible = false;
+            label2.Visible = false;
             label3.Visible = false;
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            textBox_Search.Text = string.Empty;
+            
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void visitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,19 +498,65 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = visitBindingSource;
             }
 
-            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns["Visitors_SNP"].DisplayIndex = 0;
+            dataGridView1.Columns["Prisoners_SNP"].DisplayIndex = 1;
+            dataGridView1.Columns["relation_to_the_prisoner"].DisplayIndex = 2;
+            dataGridView1.Columns["date_of_visit"].DisplayIndex = 3;
+            dataGridView1.Columns["time_of_visit"].DisplayIndex = 4;
+            dataGridView1.Columns["visit_id"].Visible = false;
 
-            checkBox1.Visible = false;
-            label2.Visible = false;
+            //dataGridView1.Columns[0].Visible = false;
+
+            checkBox_Sort.Visible = false;
+            label_Sort.Visible = false;
 
             comboBox_Filtration.Visible = true;
-            label3.Visible = true;
+            label_Filter.Visible = true;
 
             List<string> relationList = new List<string> { "friend", "family", "colleague", "other", "all" };
             comboBox_Filtration.DataSource = relationList;
             comboBox_Filtration.SelectedIndex = 4;
 
             comboBox_Filtration.SelectedIndexChanged += new EventHandler(comboBox_Filtration_SelectedIndexChanged);
+
+            label_Search.Text = "Search by Visitor's SNP or Prisoner's SNP:";
+
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label_Filter.Text = "Filter by Relation and Date of visit:";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            label2.Visible = true;
+            label3.Visible = true;
+            dateTimePicker1.Visible = true;
+            dateTimePicker2.Visible = true;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = true;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void incidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -261,11 +567,41 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = false;
-            label2.Visible = false;
+            checkBox_Sort.Visible = false;
+            label_Sort.Visible = false;
 
             comboBox_Filtration.Visible = false;
+
+            label_Search.Text = "Search by Incident type:";
+
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label_Filter.Visible = false;
+            label2.Visible = false;
             label3.Visible = false;
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void comittedIncidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -294,11 +630,49 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = false;
-            label2.Visible = false;
+            checkBox_Sort.Visible = false;
+            label_Sort.Visible = false;
 
             comboBox_Filtration.Visible = false;
-            label3.Visible = false;
+            label_Filter.Visible = true;
+
+            label_Search.Text = "Search by Incident type:";
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label_Filter.Text = "Filter by Date of committed incident:";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            label2.Visible = true;
+            label3.Visible = true;
+            dateTimePicker1.Visible = true;
+            dateTimePicker2.Visible = true;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = true;
+
+            checkBox_Sort.Checked = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void participantsOfTheIncidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -328,11 +702,40 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            checkBox1.Visible = false;
-            label2.Visible = false;
+            checkBox_Sort.Visible = false;
+            label_Sort.Visible = false;
 
             comboBox_Filtration.Visible = false;
+            label_Filter.Visible = false;
+
+            label_Search.Text = "Search by Prisoner's SNP:";
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+
+            label2.Visible = false;
             label3.Visible = false;
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            checkBox_BirthdayDate.Visible = false;
+
+            checkBox_ReleaseDate.Visible = false;
+
+            checkBox_HireDate.Visible = false;
+
+            checkBox_ShiftDate.Visible = false;
+
+            checkBox_VisitDate.Visible = false;
+
+            checkBox_CommittedIncidentDate.Visible = false;
+
+            checkBox_Sort.Checked = false;
+
+            textBox_Search.Text = string.Empty;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private bool edit;
@@ -360,7 +763,7 @@ namespace PrisonDataBase
                 prisonDataBaseDataSet.AcceptChanges();
 
                 prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
-                personBindingSource.ResetBindings(false);
+                prisonerBindingSource.ResetBindings(false);
             }
 
             if (bindingNavigator1.BindingSource == jailerBindingSource)
@@ -372,7 +775,91 @@ namespace PrisonDataBase
                 prisonDataBaseDataSet.AcceptChanges();
 
                 jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
-                personBindingSource.ResetBindings(false);
+                jailerBindingSource.ResetBindings(false);
+            }
+
+            if (bindingNavigator1.BindingSource == cellBindingSource)
+            {
+                edit = false;
+                var edt = new EditCell();
+                edt.ShowDialog();
+                cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
+                prisonDataBaseDataSet.AcceptChanges();
+
+                cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
+                cellBindingSource.ResetBindings(false);
+            }
+
+            if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
+            {
+                edit = false;
+                var edt = new EditJailerOnShift();
+                edt.ShowDialog();
+                jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
+                prisonDataBaseDataSet.AcceptChanges();
+
+                jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
+                jaileronshiftBindingSource.ResetBindings(false);
+            }
+
+            if (bindingNavigator1.BindingSource == visitBindingSource)
+            {
+                edit = false;
+                var edt = new EditVisit();
+                edt.ShowDialog();
+                visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
+                prisonDataBaseDataSet.AcceptChanges();
+
+                visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
+                visitBindingSource.ResetBindings(false);
+            }
+
+            if (bindingNavigator1.BindingSource == visitorBindingSource)
+            {
+                edit = false;
+                var edt = new EditVisitor();
+                edt.ShowDialog();
+                visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
+                prisonDataBaseDataSet.AcceptChanges();
+
+                visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
+                visitorBindingSource.ResetBindings(false);
+            }
+
+            if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
+            {
+                edit = false;
+                var edt = new EditParticipantsOfTheIncident();
+                edt.ShowDialog();
+                participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
+                prisonDataBaseDataSet.AcceptChanges();
+
+                participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
+                participantsoftheincidentBindingSource.ResetBindings(false);
+            }
+
+            if (bindingNavigator1.BindingSource == committedincidentBindingSource)
+            {
+                edit = false;
+                var edt = new EditCommittedIncident();
+                edt.ShowDialog();
+                committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
+                prisonDataBaseDataSet.AcceptChanges();
+
+                committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
+                committedincidentBindingSource.ResetBindings(false);
+            }
+
+            if (bindingNavigator1.BindingSource == incidentBindingSource)
+            {
+                edit = false;
+                var edt = new EditIncident();
+                edt.ShowDialog();
+                incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
+                prisonDataBaseDataSet.AcceptChanges();
+
+                incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
+                incidentBindingSource.ResetBindings(false);
             }
         }
 
@@ -435,11 +922,130 @@ namespace PrisonDataBase
                         row[6].ToString(),
                         decimalValue
                     );
-
                     edt.ShowDialog();
                     jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
                     prisonDataBaseDataSet.AcceptChanges();
                 }
+            }
+
+            if (bindingNavigator1.BindingSource == cellBindingSource)
+            {
+                var st = new PrisonDataBaseDataSet.CellDataTable();
+                cellTableAdapter.FillBy(st,
+                Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                object[] row = st.Rows[0].ItemArray;
+                var edt = new EditCell(
+                    Convert.ToInt32(row[0]),
+                    Convert.ToInt32(row[1]),
+                    Convert.ToInt32(row[2]),
+                    Convert.ToInt32(row[3]),
+                    row[4].ToString()
+                );
+                edt.ShowDialog();
+                cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
+            {
+                var st = new PrisonDataBaseDataSet.Jailer_on_shiftDataTable();
+                jailer_on_shiftTableAdapter.FillBy(st,
+                Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                object[] row = st.Rows[0].ItemArray;
+                var edt = new EditJailerOnShift(
+                    Convert.ToInt32(row[0]),
+                    Convert.ToDateTime(row[1]),
+                    Convert.ToInt32(row[2]),
+                    Convert.ToInt32(row[3])
+                );
+                edt.ShowDialog();
+                jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == visitBindingSource)
+            {
+                var st = new PrisonDataBaseDataSet.VisitDataTable();
+                visitTableAdapter.FillBy(st,
+                Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                object[] row = st.Rows[0].ItemArray;
+                var edt = new EditVisit(
+                    Convert.ToInt32(row[0]),
+                    row[1].ToString(),
+                    Convert.ToDateTime(row[2]),
+                    row[3].ToString(),
+                    row[4].ToString(),
+                    row[5].ToString()
+                );
+                edt.ShowDialog();
+                visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == visitorBindingSource)
+            {
+                var st = new PrisonDataBaseDataSet.VisitorDataTable();
+                visitorTableAdapter.FillBy(st,
+                Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                object[] row = st.Rows[0].ItemArray;
+                var edt = new EditVisitor(
+                    Convert.ToInt32(row[0]),
+                    row[1].ToString(),
+                    Convert.ToDateTime(row[2]),
+                    row[3].ToString()
+                );
+                edt.ShowDialog();
+                visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
+            {
+                var st = new PrisonDataBaseDataSet.Participants_of_the_incidentDataTable();
+                participants_of_the_incidentTableAdapter.FillBy(st,
+                Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                object[] row = st.Rows[0].ItemArray;
+                var edt = new EditParticipantsOfTheIncident(
+                    Convert.ToInt32(row[0]),
+                    row[1].ToString(),
+                    row[2].ToString()
+                );
+                edt.ShowDialog();
+                participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == committedincidentBindingSource)
+            {
+                var st = new PrisonDataBaseDataSet.Committed_incidentDataTable();
+                committed_incidentTableAdapter.FillBy(st,
+                Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                object[] row = st.Rows[0].ItemArray;
+                var edt = new EditCommittedIncident(
+                    Convert.ToInt32(row[0]),
+                    Convert.ToDateTime(row[1]),
+                    row[1].ToString(),
+                    row[2].ToString()
+                );
+                edt.ShowDialog();
+                committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == incidentBindingSource)
+            {
+                var st = new PrisonDataBaseDataSet.IncidentDataTable();
+                incidentTableAdapter.FillBy(st,
+                Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                object[] row = st.Rows[0].ItemArray;
+                var edt = new EditIncident(
+                    Convert.ToInt32(row[0]),
+                    row[1].ToString(),
+                    row[2].ToString()
+                );
+                edt.ShowDialog();
+                incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
+                prisonDataBaseDataSet.AcceptChanges();
             }
         }
 
@@ -465,7 +1071,58 @@ namespace PrisonDataBase
                 jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
                 prisonDataBaseDataSet.AcceptChanges();
             }
+
+            if (bindingNavigator1.BindingSource == cellBindingSource)
+            {
+                cellTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
+            {
+                jailer_on_shiftTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == visitBindingSource)
+            {
+                visitTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == visitorBindingSource)
+            {
+                visitorTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
+            {
+                participants_of_the_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == committedincidentBindingSource)
+            {
+                committed_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
+
+            if (bindingNavigator1.BindingSource == incidentBindingSource)
+            {
+                incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
+                prisonDataBaseDataSet.AcceptChanges();
+            }
         }
+
+        private string search = "";
 
         private void textBox_Search_TextChanged(object sender, EventArgs e)
         {
@@ -473,53 +1130,69 @@ namespace PrisonDataBase
 
             if (bindingNavigator1.BindingSource == personBindingSource)
             {
-                personBindingSource.Filter = $"SNP LIKE '%{searchText}%'";
+                search = personBindingSource.Filter = $"SNP LIKE '%{searchText}%'";
             }
 
-            if (bindingNavigator1.BindingSource == prisonerBindingSource)
+            else if (bindingNavigator1.BindingSource == prisonerBindingSource)
             {
-                prisonerBindingSource.Filter = $"number_of_article LIKE '%{searchText}%' OR SNP LIKE '%{searchText}%' OR CONVERT(cell_number, System.String) LIKE '%{searchText}%'";
+                if (checkBox1.Checked)
+                {
+                    search = prisonerBindingSource.Filter = $"SNP LIKE '%{searchText}%'";
+                }
+                if (checkBox2.Checked)
+                {
+                    search = prisonerBindingSource.Filter = $"CONVERT(cell_number, System.String) LIKE '%{searchText}%'";
+                }
             }
 
-            if (bindingNavigator1.BindingSource == jailerBindingSource)
+            else if (bindingNavigator1.BindingSource == jailerBindingSource)
             {
-                jailerBindingSource.Filter = $"SNP LIKE '%{searchText}%' OR email LIKE '%{searchText}%'";
+                search = jailerBindingSource.Filter = $"SNP LIKE '%{searchText}%'";
             }
 
-            if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
+            else if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
             {
-                jaileronshiftBindingSource.Filter = $"SNP LIKE '%{searchText}%' OR CONVERT(cell_number, System.String) LIKE '%{searchText}%'";
+                if (checkBox1.Checked)
+                {
+                    search = jaileronshiftBindingSource.Filter = $"SNP LIKE '%{searchText}%'";
+                }
+                if (checkBox2.Checked)
+                {
+                    search = jaileronshiftBindingSource.Filter = $"CONVERT(cell_number, System.String) LIKE '%{searchText}%'";
+                }
             }
 
-            if (bindingNavigator1.BindingSource == cellBindingSource)
+            else if (bindingNavigator1.BindingSource == cellBindingSource)
             {
-                cellBindingSource.Filter = $"CONVERT(cell_number, 'System.String') LIKE '%{searchText}%' OR cell_type LIKE '%{searchText}%'";
+                search = cellBindingSource.Filter = $"CONVERT(cell_number, 'System.String') LIKE '%{searchText}%'";
             }
 
-            if (bindingNavigator1.BindingSource == visitorBindingSource)
+            else if (bindingNavigator1.BindingSource == visitorBindingSource)
             {
-                visitorBindingSource.Filter = $"SNP LIKE '%{searchText}%'";
+                search = visitorBindingSource.Filter = $"SNP LIKE '%{searchText}%'";
             }
 
-            if (bindingNavigator1.BindingSource == visitBindingSource)
+            else if (bindingNavigator1.BindingSource == visitBindingSource)
             {
-                visitBindingSource.Filter = $"relation_to_the_prisoner LIKE '%{searchText}%'";
+                search = visitBindingSource.Filter = $"Visitors_SNP LIKE '%{searchText}%' OR Prisoners_SNP LIKE '%{searchText}%'";
             }
 
-            if (bindingNavigator1.BindingSource == incidentBindingSource)
+            else if (bindingNavigator1.BindingSource == incidentBindingSource)
             {
-                incidentBindingSource.Filter = $"incident_type LIKE '%{searchText}%' OR incident_description LIKE '%{searchText}%'";
+                search = incidentBindingSource.Filter = $"incident_type LIKE '%{searchText}%'";
             }
 
-            if (bindingNavigator1.BindingSource == committedincidentBindingSource)
+            else if (bindingNavigator1.BindingSource == committedincidentBindingSource)
             {
-                committedincidentBindingSource.Filter = $"CONVERT(time_of_incident, 'System.String') LIKE '%{searchText}%' OR incident_type LIKE '%{searchText}%'";
+                search = committedincidentBindingSource.Filter = $"incident_type LIKE '%{searchText}%'";
             }
 
-            if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
+            else if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
             {
-                participantsoftheincidentBindingSource.Filter = $"incident_type LIKE '%{searchText}%' OR Prisoners_SNP LIKE '%{searchText}%'";
+                search = participantsoftheincidentBindingSource.Filter = $"Prisoners_SNP LIKE '%{searchText}%'";
             }
+
+            ApplyFilters();
         }
 
         private void formulationOfQueriesstatisticsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -606,9 +1279,6 @@ namespace PrisonDataBase
             return inmatesInfo;
         }
 
-        private string previousFilter = "";
-        private string previousSort = "";
-
         private DataTable Query(string connectionString, string query)
         {
             DataTable dataTable = new DataTable();
@@ -629,14 +1299,17 @@ namespace PrisonDataBase
             return dataTable;
         }
 
+        private string query = "";
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
             if (bindingNavigator1.BindingSource == personBindingSource)
             {
-                string query = "SELECT * FROM Person WHERE 1=1";
+                query = "";
+                query = "SELECT * FROM Person WHERE 1=1";
 
-                if (checkBox1.Checked)
+                if (checkBox_Sort.Checked)
                 {
                     query += " ORDER BY SNP";
                 }
@@ -644,25 +1317,12 @@ namespace PrisonDataBase
                 personBindingSource.DataSource = Query(ConnectionString, query);
             }
 
-            //if (bindingNavigator1.BindingSource == prisonerBindingSource)
-            //{
-            //    string query = "SELECT Prisoner.*, Person.SNP FROM Prisoner " +
-            //       "INNER JOIN Person ON Prisoner.person_id = Person.person_id " +
-            //       "WHERE 1=1";
-
-            //    if (checkBox1.Checked)
-            //    {
-            //        query += " ORDER BY Person.SNP";
-            //    }
-
-            //    prisonerBindingSource.DataSource = Query(ConnectionString, query);
-            //}
-
             if (bindingNavigator1.BindingSource == jailerBindingSource)
             {
-                string query = "SELECT * FROM Jailer WHERE 1=1";
+                query = "";
+                query = "SELECT * FROM Jailer WHERE 1=1";
 
-                if (checkBox1.Checked)
+                if (checkBox_Sort.Checked)
                 {
                     query += " ORDER BY SNP";
                 }
@@ -670,98 +1330,73 @@ namespace PrisonDataBase
                 jailerBindingSource.DataSource = Query(ConnectionString, query);
             }
 
-            //if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
-            //{
-            //    string query = "SELECT * FROM Jailer_on_shift WHERE 1=1";
-
-            //    if (checkBox1.Checked)
-            //    {
-            //        query += " ORDER BY SNP";
-            //    }
-
-            //    jaileronshiftBindingSource.DataSource = Query(ConnectionString, query);
-            //}
-
             if (bindingNavigator1.BindingSource == visitorBindingSource)
             {
-                string query = "SELECT * FROM Visitor WHERE 1=1";
+                query = "";
+                query = "SELECT * FROM Visitor WHERE 1=1";
 
-                if (checkBox1.Checked)
+                if (checkBox_Sort.Checked)
                 {
                     query += " ORDER BY SNP";
                 }
 
                 visitorBindingSource.DataSource = Query(ConnectionString, query);
             }
-
-            //if (bindingNavigator1.BindingSource == visitBindingSource)
-            //{
-            //    string query = "SELECT * FROM Visit WHERE 1=1";
-
-            //    if (checkBox1.Checked)
-            //    {
-            //        query += " ORDER BY SNP";
-            //    }
-
-            //    visitBindingSource.DataSource = Query(ConnectionString, query);
-            //}
-
-            //if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
-            //{
-            //    string query = "SELECT * FROM Participants_of_the_incident WHERE 1=1";
-
-            //    if (checkBox1.Checked)
-            //    {
-            //        query += " ORDER BY SNP";
-            //    }
-
-            //    participantsoftheincidentBindingSource.DataSource = Query(ConnectionString, query);
-            //}
         }
+
+        private string filter = "";
 
         private void comboBox_Filtration_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (bindingNavigator1.BindingSource == personBindingSource || bindingNavigator1.BindingSource == jailerBindingSource)
             {
+                filter = "";
+
                 string selectedGender = comboBox_Filtration.SelectedItem.ToString();
 
                 if (selectedGender == "all")
                 {
-                    ((BindingSource)dataGridView1.DataSource).Filter = "";
+                    filter = "";
                 }
                 else
                 {
-                    ((BindingSource)dataGridView1.DataSource).Filter = $"gender = '{selectedGender}'";
+                    filter = $"gender = '{selectedGender}'";
                 }
             }
-            
+
             if (bindingNavigator1.BindingSource == visitBindingSource)
             {
+                filter = "";
+
                 string selectedRelation = comboBox_Filtration.SelectedItem.ToString();
 
                 if (selectedRelation == "all")
                 {
-                    ((BindingSource)dataGridView1.DataSource).Filter = "";
+                    filter = "";
                 }
                 else
                 {
-                    ((BindingSource)dataGridView1.DataSource).Filter = $"relation_to_the_prisoner = '{selectedRelation}'";
+                    filter = $"relation_to_the_prisoner = '{selectedRelation}'";
                 }
             }
 
             if (bindingNavigator1.BindingSource == cellBindingSource)
             {
+                filter = "";
+
                 string selectedType = comboBox_Filtration.SelectedItem.ToString();
 
                 if (selectedType == "all")
                 {
-                    ((BindingSource)dataGridView1.DataSource).Filter = "";
+                    filter = "";
                 }
                 else
                 {
-                    ((BindingSource)dataGridView1.DataSource).Filter = $"cell_type = '{selectedType}'";
+                    filter = $"cell_type = '{selectedType}'";
                 }
             }
+
+            ApplyFilters();
         }
 
         private void button_PrintReport1_Click(object sender, EventArgs e)
@@ -784,9 +1419,9 @@ namespace PrisonDataBase
                             Jailer;
                         ";
 
-                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
-                        using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                         {
                             saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
                             saveFileDialog.Title = "Save Text File";
@@ -823,7 +1458,7 @@ namespace PrisonDataBase
                 }
         }
 
-        private void crossTableToolStripMenuItem_Click(object sender, EventArgs e)
+        private void visitsOfPrisonersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             label1.Text = "Prisoners and visits cross-table";
             bindingNavigator1.Visible = false;
@@ -875,6 +1510,169 @@ namespace PrisonDataBase
                         ";
 
             dataGridView1.DataSource = Query(ConnectionString, query);
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ApplyFilters()
+        {
+            List<string> filters = new List<string>();
+
+            if (!string.IsNullOrEmpty(filter)) filters.Add(filter);
+
+            if (!string.IsNullOrEmpty(search)) filters.Add(search);
+
+            if (bindingNavigator1.BindingSource == personBindingSource)
+            {
+                if (!string.IsNullOrEmpty(birthdayFilter)) filters.Add(birthdayFilter);
+            }
+
+            else if (bindingNavigator1.BindingSource == prisonerBindingSource)
+            {
+                if (!string.IsNullOrEmpty(releaseFilter)) filters.Add(releaseFilter);
+            }
+
+            else if (bindingNavigator1.BindingSource == jailerBindingSource)
+            {
+                if (!string.IsNullOrEmpty(hireFilter)) filters.Add(hireFilter);
+            }
+
+            else if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
+            {
+                if (!string.IsNullOrEmpty(shiftFilter)) filters.Add(shiftFilter);
+            }
+
+            else if (bindingNavigator1.BindingSource == visitBindingSource)
+            {
+                if (!string.IsNullOrEmpty(visitFilter)) filters.Add(visitFilter);
+            }
+
+
+            else if (bindingNavigator1.BindingSource == committedincidentBindingSource)
+            {
+                if (!string.IsNullOrEmpty(incidentFilter)) filters.Add(incidentFilter);
+            }
+
+            string combinedFilter = string.Join(" AND ", filters);
+
+            ((BindingSource)dataGridView1.DataSource).Filter = combinedFilter;
+        }
+
+        private string birthdayFilter = "";
+
+        private void checkBox_Date_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox_BirthdayDate.Checked)
+            {
+                birthdayFilter = "";
+                ApplyFilters();
+                return;
+            }
+
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            birthdayFilter = $"date_of_birth >= #{startDate:MM/dd/yyyy}# AND date_of_birth <= #{endDate:MM/dd/yyyy}#";
+
+            ApplyFilters();
+        }
+
+        private string releaseFilter = "";
+
+        private void checkBox_ReleaseDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox_ReleaseDate.Checked)
+            {
+                releaseFilter = "";
+                ApplyFilters();
+                return;
+            }
+
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            releaseFilter = $"release_date >= #{startDate:MM/dd/yyyy}# AND release_date <= #{endDate:MM/dd/yyyy}#";
+
+            ApplyFilters();
+        }
+
+        private string hireFilter = "";
+
+        private void checkBox_HireDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox_HireDate.Checked)
+            {
+                hireFilter = "";
+                ApplyFilters();
+                return;
+            }
+
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            hireFilter = $"hire_date >= #{startDate:MM/dd/yyyy}# AND hire_date <= #{endDate:MM/dd/yyyy}#";
+
+            ApplyFilters();
+        }
+
+        private string shiftFilter = "";
+
+        private void checkBox_ShiftDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox_ShiftDate.Checked)
+            {
+                shiftFilter = "";
+                ApplyFilters();
+                return;
+            }
+
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            shiftFilter = $"shift_date >= #{startDate:MM/dd/yyyy}# AND shift_date <= #{endDate:MM/dd/yyyy}#";
+
+            ApplyFilters();
+        }
+
+        private string visitFilter = "";
+
+        private void checkBox_VisitDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox_VisitDate.Checked)
+            {
+                visitFilter = "";
+                ApplyFilters();
+                return;
+            }
+
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            visitFilter = $"date_of_visit >= #{startDate:MM/dd/yyyy}# AND date_of_visit <= #{endDate:MM/dd/yyyy}#";
+
+            ApplyFilters();
+        }
+
+        private string incidentFilter = "";
+
+        private void checkBox_CommittedIncidentDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox_VisitDate.Checked)
+            {
+                incidentFilter = "";
+                ApplyFilters();
+                return;
+            }
+
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            incidentFilter = $"date_of_incident >= #{startDate:MM/dd/yyyy}# AND date_of_incident <= #{endDate:MM/dd/yyyy}#";
+
+            ApplyFilters();
         }
     }
 }
