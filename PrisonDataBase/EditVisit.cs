@@ -27,7 +27,7 @@ namespace PrisonDataBase
 
         private void EditVisit_Load(object sender, EventArgs e)
         {
-            this.visitTableAdapter.Fill(this.prisonDataBaseDataSet.Visit);
+            //this.visitTableAdapter.Fill(this.prisonDataBaseDataSet.Visit);
             this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
             this.visitorTableAdapter.Fill(this.prisonDataBaseDataSet.Visitor);
         }

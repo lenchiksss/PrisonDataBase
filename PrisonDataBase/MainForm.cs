@@ -107,13 +107,18 @@ namespace PrisonDataBase
 
         private void personToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            personLoad();
+        }
+
+        private void personLoad()
+        {
             search = "";
 
             bindingNavigator1.BindingSource = personBindingSource;
             dataGridView1.DataSource = personBindingSource;
             label1.Text = "Persons";
 
-            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns["person_id"].Visible = false;
 
             checkBox_Sort.Visible = true;
             label_Sort.Visible = true;
@@ -174,6 +179,11 @@ namespace PrisonDataBase
 
         private void prisonerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            prisonerLoad();
+        }
+
+        private void prisonerLoad()
+        {
             search = "";
 
             bindingNavigator1.BindingSource = prisonerBindingSource;
@@ -201,11 +211,11 @@ namespace PrisonDataBase
 
             dataGridView1.Columns[0].Visible = false;
 
-            //dataGridView1.Columns["SNP"].DisplayIndex = 0;
-            //dataGridView1.Columns["incarceration_date"].DisplayIndex = 1;
-            //dataGridView1.Columns["release_date"].DisplayIndex = 2;
-            //dataGridView1.Columns["number_of_article"].DisplayIndex = 3;
-            //dataGridView1.Columns["cell_number"].DisplayIndex = 3;
+            dataGridView1.Columns["SNP"].DisplayIndex = 0;
+            dataGridView1.Columns["incarceration_date"].DisplayIndex = 1;
+            dataGridView1.Columns["release_date"].DisplayIndex = 2;
+            dataGridView1.Columns["number_of_article"].DisplayIndex = 3;
+            dataGridView1.Columns["cell_number"].DisplayIndex = 3;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -259,6 +269,11 @@ namespace PrisonDataBase
         }
 
         private void jailerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            jailerLoad();
+        }
+
+        private void jailerLoad()
         {
             search = "";
 
@@ -326,6 +341,11 @@ namespace PrisonDataBase
 
         private void jailerOnShiftToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            jailerOnShiftLoad();
+        }
+
+        private void jailerOnShiftLoad()
+        {
             search = "";
 
             bindingNavigator1.BindingSource = jaileronshiftBindingSource;
@@ -351,12 +371,12 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = jaileronshiftBindingSource;
             }
 
-            dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[0].Visible = false;
 
-            //dataGridView1.Columns["SNP"].DisplayIndex = 0;
-            //dataGridView1.Columns["cell_number"].DisplayIndex = 1;
-            //dataGridView1.Columns["shift_date"].DisplayIndex = 2;
-            //dataGridView1.Columns["jailer_on_shift_id"].Visible = false;
+            dataGridView1.Columns["SNP"].DisplayIndex = 0;
+            dataGridView1.Columns["cell_number"].DisplayIndex = 1;
+            dataGridView1.Columns["shift_date"].DisplayIndex = 2;
+            dataGridView1.Columns["jailer_on_shift_id"].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -412,6 +432,11 @@ namespace PrisonDataBase
 
         private void cellToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            cellLoad();
+        }
+
+        private void cellLoad()
+        {
             search = "";
 
             bindingNavigator1.BindingSource = cellBindingSource;
@@ -466,10 +491,14 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = true;
             button_PrintReport.Visible = true;
             button_PrintReport1.Visible = false;
-
         }
 
         private void visitorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            visitorLoad();
+        }
+
+        private void visitorLoad()
         {
             search = "";
 
@@ -509,7 +538,7 @@ namespace PrisonDataBase
             checkBox_Sort.Checked = false;
 
             textBox_Search.Text = string.Empty;
-            
+
             checkBox1.Checked = false;
             checkBox2.Checked = false;
 
@@ -522,6 +551,11 @@ namespace PrisonDataBase
         }
 
         private void visitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            visitLoad();
+        }
+
+        private void visitLoad()
         {
             search = "";
 
@@ -548,14 +582,14 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = visitBindingSource;
             }
 
-            //dataGridView1.Columns["Visitors_SNP"].DisplayIndex = 0;
-            //dataGridView1.Columns["Prisoners_SNP"].DisplayIndex = 1;
-            //dataGridView1.Columns["relation_to_the_prisoner"].DisplayIndex = 2;
-            //dataGridView1.Columns["date_of_visit"].DisplayIndex = 3;
-            //dataGridView1.Columns["time_of_visit"].DisplayIndex = 4;
-            //dataGridView1.Columns["visit_id"].Visible = false;
+            dataGridView1.Columns["Visitors_SNP"].DisplayIndex = 0;
+            dataGridView1.Columns["Prisoners_SNP"].DisplayIndex = 1;
+            dataGridView1.Columns["relation_to_the_prisoner"].DisplayIndex = 2;
+            dataGridView1.Columns["date_of_visit"].DisplayIndex = 3;
+            dataGridView1.Columns["time_of_visit"].DisplayIndex = 4;
+            dataGridView1.Columns["visit_id"].Visible = false;
 
-            dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[0].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -616,6 +650,11 @@ namespace PrisonDataBase
 
         private void incidentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            incidentLoad();
+        }
+
+        private void incidentLoad()
+        {
             search = "";
 
             bindingNavigator1.BindingSource = incidentBindingSource;
@@ -668,6 +707,11 @@ namespace PrisonDataBase
 
         private void comittedIncidentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            committedIncidentLoad();
+        }
+
+        private void committedIncidentLoad()
+        {
             search = "";
 
             bindingNavigator1.BindingSource = committedincidentBindingSource;
@@ -692,7 +736,13 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = committedincidentBindingSource;
             }
 
-            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns["Incident_type"].DisplayIndex = 0;
+            dataGridView1.Columns["date_of_incident"].DisplayIndex = 1;
+            dataGridView1.Columns["time_of_incident"].DisplayIndex = 2;
+
+            dataGridView1.Columns["committed_incident_id"].Visible = false;
+
+            //dataGridView1.Columns[0].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -745,6 +795,11 @@ namespace PrisonDataBase
         }
 
         private void participantsOfTheIncidentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            participantsOfTheIncidentLoad();
+        }
+
+        private void participantsOfTheIncidentLoad()
         {
             search = "";
 
@@ -828,6 +883,8 @@ namespace PrisonDataBase
 
                 personTableAdapter.Fill(prisonDataBaseDataSet.Person);
                 personBindingSource.ResetBindings(false);
+
+                personLoad();
             }
 
             if (bindingNavigator1.BindingSource == prisonerBindingSource)
@@ -840,6 +897,8 @@ namespace PrisonDataBase
 
                 prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
                 prisonerBindingSource.ResetBindings(false);
+
+                prisonerLoad();
             }
 
             if (bindingNavigator1.BindingSource == jailerBindingSource)
@@ -852,6 +911,8 @@ namespace PrisonDataBase
 
                 jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
                 jailerBindingSource.ResetBindings(false);
+
+                jailerLoad();
             }
 
             if (bindingNavigator1.BindingSource == cellBindingSource)
@@ -864,6 +925,8 @@ namespace PrisonDataBase
 
                 cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
                 cellBindingSource.ResetBindings(false);
+
+                cellLoad();
             }
 
             if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
@@ -876,6 +939,8 @@ namespace PrisonDataBase
 
                 jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
                 jaileronshiftBindingSource.ResetBindings(false);
+
+                jailerOnShiftLoad();
             }
 
             if (bindingNavigator1.BindingSource == visitBindingSource)
@@ -888,6 +953,8 @@ namespace PrisonDataBase
 
                 visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
                 visitBindingSource.ResetBindings(false);
+
+                visitLoad();
             }
 
             if (bindingNavigator1.BindingSource == visitorBindingSource)
@@ -900,6 +967,8 @@ namespace PrisonDataBase
 
                 visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
                 visitorBindingSource.ResetBindings(false);
+
+                visitorLoad();
             }
 
             if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
@@ -912,6 +981,8 @@ namespace PrisonDataBase
 
                 participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
                 participantsoftheincidentBindingSource.ResetBindings(false);
+
+                participantsOfTheIncidentLoad();
             }
 
             if (bindingNavigator1.BindingSource == committedincidentBindingSource)
@@ -924,6 +995,8 @@ namespace PrisonDataBase
 
                 committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
                 committedincidentBindingSource.ResetBindings(false);
+
+                committedIncidentLoad();
             }
 
             if (bindingNavigator1.BindingSource == incidentBindingSource)
@@ -936,6 +1009,8 @@ namespace PrisonDataBase
 
                 incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
                 incidentBindingSource.ResetBindings(false);
+
+                incidentLoad();
             }
         }
 
@@ -958,6 +1033,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 personTableAdapter.Fill(prisonDataBaseDataSet.Person);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                personLoad();
             }
 
             if (bindingNavigator1.BindingSource == prisonerBindingSource)
@@ -977,6 +1054,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                prisonerLoad();
             }
 
             if (bindingNavigator1.BindingSource == jailerBindingSource)
@@ -1001,6 +1080,8 @@ namespace PrisonDataBase
                     edt.ShowDialog();
                     jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
                     prisonDataBaseDataSet.AcceptChanges();
+
+                    jailerLoad();
                 }
             }
 
@@ -1020,6 +1101,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                cellLoad();
             }
 
             if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
@@ -1037,6 +1120,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                jailerOnShiftLoad();
             }
 
             if (bindingNavigator1.BindingSource == visitBindingSource)
@@ -1056,6 +1141,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                visitLoad();
             }
 
             if (bindingNavigator1.BindingSource == visitorBindingSource)
@@ -1073,6 +1160,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                visitLoad();
             }
 
             if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
@@ -1089,6 +1178,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                participantsOfTheIncidentLoad();
             }
 
             if (bindingNavigator1.BindingSource == committedincidentBindingSource)
@@ -1106,6 +1197,8 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                committedIncidentLoad();
             }
 
             if (bindingNavigator1.BindingSource == incidentBindingSource)
@@ -1122,32 +1215,13 @@ namespace PrisonDataBase
                 edt.ShowDialog();
                 incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
                 prisonDataBaseDataSet.AcceptChanges();
+
+                incidentLoad();
             }
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (bindingNavigator1.BindingSource == personBindingSource)
-            //{
-            //    personTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-            //    personTableAdapter.Fill(prisonDataBaseDataSet.Person);
-            //    prisonDataBaseDataSet.AcceptChanges();
-            //}
-
-            //if (bindingNavigator1.BindingSource == prisonerBindingSource)
-            //{
-            //    prisonerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-            //    prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
-            //    prisonDataBaseDataSet.AcceptChanges();
-            //}
-
-            //if (bindingNavigator1.BindingSource == jailerBindingSource)
-            //{
-            //    jailerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-            //    jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
-            //    prisonDataBaseDataSet.AcceptChanges();
-            //}
-
             if (bindingNavigator1.BindingSource == personBindingSource)
             {
                 int personId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
@@ -1161,6 +1235,8 @@ namespace PrisonDataBase
                         personTableAdapter.DeleteQuery(personId);
                         personTableAdapter.Fill(prisonDataBaseDataSet.Person);
                         prisonDataBaseDataSet.AcceptChanges();
+
+                        personLoad();
 
                         MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1185,6 +1261,8 @@ namespace PrisonDataBase
                         prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
                         prisonDataBaseDataSet.AcceptChanges();
 
+                        prisonerLoad();
+
                         MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -1207,6 +1285,8 @@ namespace PrisonDataBase
                         jailerTableAdapter.DeleteQuery(jailerId);
                         jailerTableAdapter.Fill(prisonDataBaseDataSet.Jailer);
                         prisonDataBaseDataSet.AcceptChanges();
+
+                        jailerLoad();
 
                         MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1231,6 +1311,8 @@ namespace PrisonDataBase
                         cellTableAdapter.Fill(prisonDataBaseDataSet.Cell);
                         prisonDataBaseDataSet.AcceptChanges();
 
+                        cellLoad();
+
                         MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -1250,6 +1332,8 @@ namespace PrisonDataBase
                     jailer_on_shiftTableAdapter.Fill(prisonDataBaseDataSet.Jailer_on_shift);
                     prisonDataBaseDataSet.AcceptChanges();
 
+                    jailerOnShiftLoad();
+
                     MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -1263,6 +1347,8 @@ namespace PrisonDataBase
                     visitTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                     visitTableAdapter.Fill(prisonDataBaseDataSet.Visit);
                     prisonDataBaseDataSet.AcceptChanges();
+
+                    visitLoad();
 
                     MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -1281,6 +1367,8 @@ namespace PrisonDataBase
                         visitorTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                         visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
                         prisonDataBaseDataSet.AcceptChanges();
+
+                        visitorLoad();
 
                         MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1301,6 +1389,8 @@ namespace PrisonDataBase
                     participants_of_the_incidentTableAdapter.Fill(prisonDataBaseDataSet.Participants_of_the_incident);
                     prisonDataBaseDataSet.AcceptChanges();
 
+                    participantsOfTheIncidentLoad();
+
                     MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -1318,6 +1408,8 @@ namespace PrisonDataBase
                         committed_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                         committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
                         prisonDataBaseDataSet.AcceptChanges();
+
+                        committedIncidentLoad();
 
                         MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1341,6 +1433,8 @@ namespace PrisonDataBase
                         incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                         incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
                         prisonDataBaseDataSet.AcceptChanges();
+
+                        incidentLoad();
 
                         MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1762,7 +1856,23 @@ namespace PrisonDataBase
 
         private void comboBox_Filtration_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (bindingNavigator1.BindingSource == personBindingSource || bindingNavigator1.BindingSource == jailerBindingSource)
+            if (bindingNavigator1.BindingSource == personBindingSource)
+            {
+                filter = "";
+
+                string selectedGender = comboBox_Filtration.SelectedItem.ToString();
+
+                if (selectedGender == "all")
+                {
+                    filter = "";
+                }
+                else
+                {
+                    filter = $"gender = '{selectedGender}'";
+                }
+            }
+
+            if (bindingNavigator1.BindingSource == jailerBindingSource)
             {
                 filter = "";
 
@@ -1819,24 +1929,29 @@ namespace PrisonDataBase
             {
                 connection.Open();
 
-                string sqlQuery = @"
-                        SELECT
-                            jailer_id,
-                            SNP,
-                            date_of_birth,
-                            gender,
-                            hire_date,
-                            phone_number,
-                            email,
-                            salary
-                        FROM
-                            Jailer;
-                        ";
-
+                string sqlQuery = "SELECT * FROM Jailer";
+                
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
                     using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                     {
+                        if (!string.IsNullOrEmpty(filter))
+                        {
+                            query += " WHERE " + filter;
+                        }
+
+                        if (checkBox_HireDate.Checked)
+                        {
+                            DateTime startDate = dateTimePicker1.Value;
+                            DateTime endDate = dateTimePicker2.Value;
+
+                            string startDateString = $"'{startDate:yyyy-MM-dd}'";
+                            string endDateString = $"'{endDate:yyyy-MM-dd}'";
+
+                            sqlQuery += $"WHERE hire_date >= {startDateString} AND hire_date <= {endDateString}";
+
+                        }
+
                         saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
                         saveFileDialog.Title = "Save Text File";
                         saveFileDialog.FileName = "";
@@ -1874,13 +1989,31 @@ namespace PrisonDataBase
 
         private void visitsOfPrisonersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label1.Text = "Prisoners and visits cross-table";
+            label1.Text = "Prisoners and visits";
             bindingNavigator1.Visible = false;
-            //groupBox1.Visible = false;
-            //label3.Visible = false;
-            //comboBox_Filtration.Visible = false;
-            //label2.Visible = false;
-            //checkBox1.Visible = false;
+
+            label_Filter.Visible = false;
+            label3.Visible = false;
+            comboBox_Filtration.Visible = false;
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+            label2.Visible = false;
+            checkBox1.Visible = false;
+            checkBox_BirthdayDate.Visible = false;
+            checkBox_ShiftDate.Visible = false;
+            checkBox_ReleaseDate.Visible = false;
+            checkBox_VisitDate.Visible = false;
+            checkBox_HireDate.Visible = false;
+            checkBox_CommittedIncidentDate.Visible = false;
+            label4.Visible = false;
+            comboBox_Cells.Visible = false;
+            button_PrintReport.Visible = false;
+            button_PrintReport1.Visible = false;
+            label_Search.Visible = false;
+            checkBox2.Visible = false;
+            textBox_Search.Visible = false;
+            label_Sort.Visible = false;
+            checkBox_Sort.Visible = false;
 
             string query = @"
                 DECLARE @columns NVARCHAR(MAX), @sql NVARCHAR(MAX);
@@ -1931,6 +2064,8 @@ namespace PrisonDataBase
             Application.Exit();
         }
 
+        private string combinedFilter;
+
         private void ApplyFilters()
         {
             List<string> filters = new List<string>();
@@ -1970,7 +2105,7 @@ namespace PrisonDataBase
                 if (!string.IsNullOrEmpty(incidentFilter)) filters.Add(incidentFilter);
             }
 
-            string combinedFilter = string.Join(" AND ", filters);
+            combinedFilter = string.Join(" AND ", filters);
 
             ((BindingSource)dataGridView1.DataSource).Filter = combinedFilter;
         }

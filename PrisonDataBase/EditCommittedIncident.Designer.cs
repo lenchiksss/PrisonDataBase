@@ -32,8 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox_Type = new System.Windows.Forms.ComboBox();
-            this.prisonDataBaseDataSet = new PrisonDataBase.PrisonDataBaseDataSet();
             this.incidentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.prisonDataBaseDataSet = new PrisonDataBase.PrisonDataBaseDataSet();
             this.incidentTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.IncidentTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.committed_incidentTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.Committed_incidentTableAdapter();
@@ -43,8 +43,8 @@
             this.button_OK = new System.Windows.Forms.Button();
             this.textBox_TimeOfIncident = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,15 +79,15 @@
             this.comboBox_Type.TabIndex = 28;
             this.comboBox_Type.ValueMember = "incident_id";
             // 
-            // prisonDataBaseDataSet
-            // 
-            this.prisonDataBaseDataSet.DataSetName = "PrisonDataBaseDataSet";
-            this.prisonDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // incidentBindingSource
             // 
             this.incidentBindingSource.DataMember = "Incident";
             this.incidentBindingSource.DataSource = this.prisonDataBaseDataSet;
+            // 
+            // prisonDataBaseDataSet
+            // 
+            this.prisonDataBaseDataSet.DataSetName = "PrisonDataBaseDataSet";
+            this.prisonDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // incidentTableAdapter
             // 
@@ -173,8 +173,8 @@
             this.Name = "EditCommittedIncident";
             this.Text = "Edit Committed Incident";
             this.Load += new System.EventHandler(this.EditCommittedIncident_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

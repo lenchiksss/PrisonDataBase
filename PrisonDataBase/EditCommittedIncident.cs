@@ -41,7 +41,7 @@ namespace PrisonDataBase
 
             dateTimePicker_IncidentDate.Value = dateOfIncident;
             textBox_TimeOfIncident.Text = timeOfIncident;
-            comboBox_Type.SelectedValue = type;
+            comboBox_Type.Text = type;
         }
 
         private bool ValidateInput()
