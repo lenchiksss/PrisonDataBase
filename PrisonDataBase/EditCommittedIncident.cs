@@ -31,7 +31,7 @@ namespace PrisonDataBase
             this.incidentTableAdapter.Fill(this.prisonDataBaseDataSet.Incident);
         }
 
-        public EditCommittedIncident(int id, DateTime dateOfIncident, string timeOfIncident, string type)
+        public EditCommittedIncident(int id, DateTime dateOfIncident, string timeOfIncident, int type)
            : this()
         {
             incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
@@ -41,7 +41,7 @@ namespace PrisonDataBase
 
             dateTimePicker_IncidentDate.Value = dateOfIncident;
             textBox_TimeOfIncident.Text = timeOfIncident;
-            comboBox_Type.Text = type;
+            comboBox_Type.SelectedIndex = type;
         }
 
         private bool ValidateInput()

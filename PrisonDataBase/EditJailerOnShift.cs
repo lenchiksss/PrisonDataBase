@@ -27,8 +27,8 @@ namespace PrisonDataBase
         private void EditJailerOnShift_Load(object sender, EventArgs e)
         {
             this.jailer_on_shiftTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer_on_shift);
-            //this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
-            //this.jailerTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer);
+            this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
+            this.jailerTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer);
         }
 
         public EditJailerOnShift(int id, DateTime shiftDate, int snp, int cellNumber)

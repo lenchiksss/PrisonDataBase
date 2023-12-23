@@ -705,7 +705,7 @@ namespace PrisonDataBase
             button_PrintReport1.Visible = false;
         }
 
-        private void comittedIncidentToolStripMenuItem_Click(object sender, EventArgs e)
+        private void committedIncidentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             committedIncidentLoad();
         }
@@ -1191,8 +1191,8 @@ namespace PrisonDataBase
                 var edt = new EditCommittedIncident(
                     Convert.ToInt32(row[0]),
                     Convert.ToDateTime(row[1]),
-                    row[1].ToString(),
-                    row[2].ToString()
+                    row[2].ToString(),
+                    Convert.ToInt32(row[3])
                 );
                 edt.ShowDialog();
                 committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
@@ -1807,48 +1807,48 @@ namespace PrisonDataBase
             return dataTable;
         }
 
-        private string query = "";
+        private string orderBy = "";
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
             if (bindingNavigator1.BindingSource == personBindingSource)
             {
-                query = "";
-                query = "SELECT * FROM Person WHERE 1=1";
+                orderBy = "";
+                orderBy = "SELECT * FROM Person WHERE 1=1";
 
                 if (checkBox_Sort.Checked)
                 {
-                    query += " ORDER BY SNP";
+                    orderBy += " ORDER BY SNP";
                 }
 
-                personBindingSource.DataSource = Query(ConnectionString, query);
+                personBindingSource.DataSource = Query(ConnectionString, orderBy);
             }
 
             if (bindingNavigator1.BindingSource == jailerBindingSource)
             {
-                query = "";
-                query = "SELECT * FROM Jailer WHERE 1=1";
+                orderBy = "";
+                orderBy = "SELECT * FROM Jailer WHERE 1=1";
 
                 if (checkBox_Sort.Checked)
                 {
-                    query += " ORDER BY SNP";
+                    orderBy += " ORDER BY SNP";
                 }
 
-                jailerBindingSource.DataSource = Query(ConnectionString, query);
+                jailerBindingSource.DataSource = Query(ConnectionString, orderBy);
             }
 
             if (bindingNavigator1.BindingSource == visitorBindingSource)
             {
-                query = "";
-                query = "SELECT * FROM Visitor WHERE 1=1";
+                orderBy = "";
+                orderBy = "SELECT * FROM Visitor WHERE 1=1";
 
                 if (checkBox_Sort.Checked)
                 {
-                    query += " ORDER BY SNP";
+                    orderBy += " ORDER BY SNP";
                 }
 
-                visitorBindingSource.DataSource = Query(ConnectionString, query);
+                visitorBindingSource.DataSource = Query(ConnectionString, orderBy);
             }
         }
 
@@ -1930,28 +1930,28 @@ namespace PrisonDataBase
                 connection.Open();
 
                 string sqlQuery = "SELECT * FROM Jailer";
-                
-                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                    if (!string.IsNullOrEmpty(filter))
                     {
-                        if (!string.IsNullOrEmpty(filter))
-                        {
-                            query += " WHERE " + filter;
-                        }
+                        sqlQuery += " WHERE " + filter;
+                    }
 
-                        if (checkBox_HireDate.Checked)
-                        {
-                            DateTime startDate = dateTimePicker1.Value;
-                            DateTime endDate = dateTimePicker2.Value;
+                    if (checkBox_HireDate.Checked)
+                    {
+                        DateTime startDate = dateTimePicker1.Value;
+                        DateTime endDate = dateTimePicker2.Value;
 
-                            string startDateString = $"'{startDate:yyyy-MM-dd}'";
-                            string endDateString = $"'{endDate:yyyy-MM-dd}'";
+                        string startDateString = $"'{startDate:yyyy-MM-dd}'";
+                        string endDateString = $"'{endDate:yyyy-MM-dd}'";
 
-                            sqlQuery += $"WHERE hire_date >= {startDateString} AND hire_date <= {endDateString}";
+                        sqlQuery += string.IsNullOrEmpty(filter) ? " WHERE " : " AND ";
+                        sqlQuery += $"hire_date >= {startDateString} AND hire_date <= {endDateString}";
+                    }
 
-                        }
-
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
                         saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
                         saveFileDialog.Title = "Save Text File";
                         saveFileDialog.FileName = "";

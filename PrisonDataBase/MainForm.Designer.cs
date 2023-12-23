@@ -377,6 +377,7 @@
             this.comittedIncidentToolStripMenuItem.Name = "comittedIncidentToolStripMenuItem";
             this.comittedIncidentToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.comittedIncidentToolStripMenuItem.Text = "Committed incidents";
+            this.comittedIncidentToolStripMenuItem.Click += new System.EventHandler(this.committedIncidentToolStripMenuItem_Click);
             // 
             // participantsOfTheIncidentToolStripMenuItem
             // 
