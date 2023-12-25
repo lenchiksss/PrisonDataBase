@@ -49,10 +49,15 @@
             this.textBox_TimeOfVisit = new System.Windows.Forms.TextBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.visitTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.VisitTableAdapter();
+            this.prisonDataBaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.prisonerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.prisonerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -117,14 +122,14 @@
             // 
             // comboBox_PrisonersSNP
             // 
-            this.comboBox_PrisonersSNP.DataSource = this.personBindingSource;
-            this.comboBox_PrisonersSNP.DisplayMember = "SNP";
+            this.comboBox_PrisonersSNP.DataSource = this.prisonerBindingSource;
+            this.comboBox_PrisonersSNP.DisplayMember = "prisoner_id";
             this.comboBox_PrisonersSNP.FormattingEnabled = true;
             this.comboBox_PrisonersSNP.Location = new System.Drawing.Point(209, 99);
             this.comboBox_PrisonersSNP.Name = "comboBox_PrisonersSNP";
             this.comboBox_PrisonersSNP.Size = new System.Drawing.Size(223, 24);
             this.comboBox_PrisonersSNP.TabIndex = 27;
-            this.comboBox_PrisonersSNP.ValueMember = "person_id";
+            this.comboBox_PrisonersSNP.ValueMember = "prisoner_id";
             // 
             // personBindingSource
             // 
@@ -216,6 +221,20 @@
             // 
             this.visitTableAdapter.ClearBeforeFill = true;
             // 
+            // prisonDataBaseDataSetBindingSource
+            // 
+            this.prisonDataBaseDataSetBindingSource.DataSource = this.prisonDataBaseDataSet;
+            this.prisonDataBaseDataSetBindingSource.Position = 0;
+            // 
+            // prisonerBindingSource
+            // 
+            this.prisonerBindingSource.DataMember = "Prisoner";
+            this.prisonerBindingSource.DataSource = this.prisonDataBaseDataSetBindingSource;
+            // 
+            // prisonerTableAdapter
+            // 
+            this.prisonerTableAdapter.ClearBeforeFill = true;
+            // 
             // EditVisit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -241,6 +260,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +289,8 @@
         private System.Windows.Forms.TextBox textBox_TimeOfVisit;
         private System.Windows.Forms.BindingSource bindingSource1;
         private PrisonDataBaseDataSetTableAdapters.VisitTableAdapter visitTableAdapter;
+        private System.Windows.Forms.BindingSource prisonDataBaseDataSetBindingSource;
+        private System.Windows.Forms.BindingSource prisonerBindingSource;
+        private PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter prisonerTableAdapter;
     }
 }

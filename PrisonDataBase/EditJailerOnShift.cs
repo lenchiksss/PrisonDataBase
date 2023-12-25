@@ -21,14 +21,18 @@ namespace PrisonDataBase
         {
             InitializeComponent();
 
+            this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
+            this.jailerTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer);
+
             edit = false;
         }
 
         private void EditJailerOnShift_Load(object sender, EventArgs e)
         {
             this.jailer_on_shiftTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer_on_shift);
-            this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
-            this.jailerTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer);
+
+            comboBox_SNP.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_CellNumber.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public EditJailerOnShift(int id, DateTime shiftDate, int snp, int cellNumber)

@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_SNP = new System.Windows.Forms.ComboBox();
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.prisonerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.prisonDataBaseDataSet = new PrisonDataBase.PrisonDataBaseDataSet();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox_Incident = new System.Windows.Forms.ComboBox();
@@ -43,10 +44,15 @@
             this.button_OK = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.participants_of_the_incidentTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.Participants_of_the_incidentTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
+            this.prisonerTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter();
+            this.committedincidentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.committed_incidentTableAdapter = new PrisonDataBase.PrisonDataBaseDataSetTableAdapters.Committed_incidentTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.committedincidentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -61,24 +67,29 @@
             // 
             // comboBox_SNP
             // 
-            this.comboBox_SNP.DataSource = this.personBindingSource;
-            this.comboBox_SNP.DisplayMember = "SNP";
+            this.comboBox_SNP.DataSource = this.prisonerBindingSource;
+            this.comboBox_SNP.DisplayMember = "prisoner_id";
             this.comboBox_SNP.FormattingEnabled = true;
             this.comboBox_SNP.Location = new System.Drawing.Point(173, 51);
             this.comboBox_SNP.Name = "comboBox_SNP";
             this.comboBox_SNP.Size = new System.Drawing.Size(253, 24);
             this.comboBox_SNP.TabIndex = 27;
-            this.comboBox_SNP.ValueMember = "person_id";
+            this.comboBox_SNP.ValueMember = "prisoner_id";
             // 
-            // personBindingSource
+            // prisonerBindingSource
             // 
-            this.personBindingSource.DataMember = "Person";
-            this.personBindingSource.DataSource = this.prisonDataBaseDataSet;
+            this.prisonerBindingSource.DataMember = "Prisoner";
+            this.prisonerBindingSource.DataSource = this.prisonDataBaseDataSet;
             // 
             // prisonDataBaseDataSet
             // 
             this.prisonDataBaseDataSet.DataSetName = "PrisonDataBaseDataSet";
             this.prisonDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataMember = "Person";
+            this.personBindingSource.DataSource = this.prisonDataBaseDataSet;
             // 
             // label3
             // 
@@ -102,14 +113,14 @@
             // 
             // comboBox_Incident
             // 
-            this.comboBox_Incident.DataSource = this.incidentBindingSource;
-            this.comboBox_Incident.DisplayMember = "incident_type";
+            this.comboBox_Incident.DataSource = this.committedincidentBindingSource;
+            this.comboBox_Incident.DisplayMember = "committed_incident_id";
             this.comboBox_Incident.FormattingEnabled = true;
             this.comboBox_Incident.Location = new System.Drawing.Point(173, 103);
             this.comboBox_Incident.Name = "comboBox_Incident";
             this.comboBox_Incident.Size = new System.Drawing.Size(253, 24);
             this.comboBox_Incident.TabIndex = 28;
-            this.comboBox_Incident.ValueMember = "incident_id";
+            this.comboBox_Incident.ValueMember = "committed_incident_id";
             // 
             // incidentBindingSource
             // 
@@ -153,6 +164,19 @@
             // 
             this.participants_of_the_incidentTableAdapter.ClearBeforeFill = true;
             // 
+            // prisonerTableAdapter
+            // 
+            this.prisonerTableAdapter.ClearBeforeFill = true;
+            // 
+            // committedincidentBindingSource
+            // 
+            this.committedincidentBindingSource.DataMember = "Committed_incident";
+            this.committedincidentBindingSource.DataSource = this.prisonDataBaseDataSet;
+            // 
+            // committed_incidentTableAdapter
+            // 
+            this.committed_incidentTableAdapter.ClearBeforeFill = true;
+            // 
             // EditParticipantsOfTheIncident
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -168,10 +192,12 @@
             this.Name = "EditParticipantsOfTheIncident";
             this.Text = "Edit Participants Of The Incident";
             this.Load += new System.EventHandler(this.EditParticipantsOfTheIncident_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prisonDataBaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.committedincidentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +219,9 @@
         private System.Windows.Forms.Button button_OK;
         private System.Windows.Forms.BindingSource bindingSource1;
         private PrisonDataBaseDataSetTableAdapters.Participants_of_the_incidentTableAdapter participants_of_the_incidentTableAdapter;
+        private System.Windows.Forms.BindingSource prisonerBindingSource;
+        private PrisonDataBaseDataSetTableAdapters.PrisonerTableAdapter prisonerTableAdapter;
+        private System.Windows.Forms.BindingSource committedincidentBindingSource;
+        private PrisonDataBaseDataSetTableAdapters.Committed_incidentTableAdapter committed_incidentTableAdapter;
     }
 }

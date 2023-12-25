@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace PrisonDataBase
 {
     public partial class EditJailer : Form
     {
+        private const string ConnectionString = "Data Source=DESKTOP-6BKJL0I\\MSSQL;Initial Catalog=PrisonDataBase;Integrated Security=True;Connect Timeout=30; TrustServerCertificate=True";
+
         private readonly int id;
 
         readonly bool edit;
@@ -63,11 +66,42 @@ namespace PrisonDataBase
             return age >= 18;
         }
 
+        private bool IsPhoneNumberUnique(string phoneNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT COUNT(*) FROM Jailer WHERE phone_number = @PhoneNumber";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    return count == 0;
+                }
+            }
+        }
+
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(textBox_SNP.Text))
             {
                 MessageBox.Show("SNP cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (Regex.IsMatch(textBox_SNP.Text, @"\d"))
+            {
+                MessageBox.Show("SNP cannot contain numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (textBox_SNP.Text.Length < 5)
+            {
+                MessageBox.Show("SNP must be at least 5 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -89,9 +123,29 @@ namespace PrisonDataBase
                 return false;
             }
 
+            string phoneNumber = textBox_PhoneNumber.Text;
+
+            if (!IsPhoneNumberUnique(phoneNumber))
+            {
+                MessageBox.Show("Phone number is already in use.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!textBox_Email.Text.Contains("@"))
+            {
+                MessageBox.Show("Invalid email address format.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             if (!IsAdult(dateTimePicker_DateOfBirth.Value))
             {
                 MessageBox.Show("Person must be 18 years or older.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(comboBox_Gender.Text))
+            {
+                MessageBox.Show("Gender cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -135,7 +189,6 @@ namespace PrisonDataBase
                         MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-
             }
 
             else
@@ -159,6 +212,8 @@ namespace PrisonDataBase
         private void EditJailer_Load(object sender, EventArgs e)
         {
             this.jailerTableAdapter.Fill(this.prisonDataBaseDataSet.Jailer);
+
+            comboBox_Gender.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void button_CANCEL_Click(object sender, EventArgs e)

@@ -118,9 +118,9 @@
             // 
             this.comboBox_cellType.FormattingEnabled = true;
             this.comboBox_cellType.Items.AddRange(new object[] {
-            "Single",
-            "Double",
-            "Multiple"});
+            "single",
+            "double",
+            "multiple"});
             this.comboBox_cellType.Location = new System.Drawing.Point(192, 193);
             this.comboBox_cellType.Name = "comboBox_cellType";
             this.comboBox_cellType.Size = new System.Drawing.Size(230, 24);

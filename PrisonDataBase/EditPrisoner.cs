@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace PrisonDataBase
 {
     public partial class EditPrisoner : Form
     {
+        private const string ConnectionString = "Data Source=DESKTOP-6BKJL0I\\MSSQL;Initial Catalog=PrisonDataBase;Integrated Security=True;Connect Timeout=30; TrustServerCertificate=True";
+
         private readonly int id;
 
         readonly bool edit;
@@ -32,8 +35,9 @@ namespace PrisonDataBase
         private void EditPrisoner_Load(object sender, EventArgs e)
         {
             this.prisonerTableAdapter.Fill(this.prisonDataBaseDataSet.Prisoner);
-            //this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
-            //this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
+
+            comboBox_SNP.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_CellNumber.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public EditPrisoner(int id, DateTime incarcerationDate, DateTime releaseDate, string numberOfArticle, string personSNP, int cellNumber)
@@ -51,8 +55,101 @@ namespace PrisonDataBase
             comboBox_CellNumber.SelectedValue = cellNumber;
         }
 
+        private DateTime DateOfBirth(string personSNP)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT date_of_birth FROM Person WHERE SNP = @SNP";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@SNP", personSNP);
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return (DateTime)result;
+                    }
+                }
+            }
+
+            return DateTime.MinValue;
+        }
+
+        private int GetMaxCapacityOfCell(int cellNumber)
+        {
+            int maxCapacity = 0;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT capacity FROM Cell WHERE cell_id = @cellNumber";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@cellNumber", cellNumber);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        maxCapacity = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return maxCapacity;
+        }
+
+        private int GetCurrentOccupancyOfCell(int cellNumber)
+        {
+            int currentOccupancy = 0;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string sqlQuery = "SELECT current_occupancy FROM Cell WHERE cell_id = @cellNumber";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@cellNumber", cellNumber);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        currentOccupancy = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return currentOccupancy;
+        }
+
         private bool ValidateInput()
         {
+            int maxCapacity = GetMaxCapacityOfCell(Convert.ToInt32(comboBox_CellNumber.SelectedValue));
+            int currentOccupancy = GetCurrentOccupancyOfCell(Convert.ToInt32(comboBox_CellNumber.SelectedValue));
+
+            if (currentOccupancy >= maxCapacity)
+            {
+                MessageBox.Show("The cell is already at full capacity. Cannot add more prisoners.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            string personSNP = comboBox_SNP.SelectedValue.ToString();
+            DateTime dateOfBirth = DateOfBirth(personSNP);
+            DateTime incarcerationDate = dateTimePicker_IncarcerationDate.Value.Date;
+
+            if (incarcerationDate.Date < dateOfBirth.Date)
+            {
+                MessageBox.Show("Incarceration Date cannot be earlier than Date of Birth.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             string numberOfArticle = textBox_NumberOfArticle.Text.Trim();
             Regex regex = new Regex(@"^(\d+(-\d+)?)$");
 
@@ -96,6 +193,7 @@ namespace PrisonDataBase
                           Convert.ToInt32(comboBox_SNP.SelectedValue),
                           Convert.ToInt32(comboBox_CellNumber.SelectedValue),
                           id);
+
                     MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

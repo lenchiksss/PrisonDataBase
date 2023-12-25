@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+
 
 namespace PrisonDataBase
 {
@@ -57,6 +59,8 @@ namespace PrisonDataBase
             dateTimePicker2.Visible = true;
             checkBox_BirthdayDate.Visible = true;
 
+            comboBox_Filtration.DropDownStyle = ComboBoxStyle.DropDownList;
+
             List<string> genderList = new List<string> { "male", "female", "all" };
             comboBox_Filtration.DataSource = genderList;
             comboBox_Filtration.SelectedIndex = 2;
@@ -67,8 +71,6 @@ namespace PrisonDataBase
 
             checkBox1.Visible = false;
             checkBox2.Visible = false;
-
-            //textBox_Search.Location = new Point(17, 105);
 
             checkBox_ReleaseDate.Visible = false;
 
@@ -89,6 +91,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -114,11 +123,13 @@ namespace PrisonDataBase
         {
             search = "";
 
+            bindingNavigator1.Visible = true;
+
             bindingNavigator1.BindingSource = personBindingSource;
             dataGridView1.DataSource = personBindingSource;
             label1.Text = "Persons";
 
-            dataGridView1.Columns["person_id"].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
 
             checkBox_Sort.Visible = true;
             label_Sort.Visible = true;
@@ -166,6 +177,9 @@ namespace PrisonDataBase
 
             textBox_Search.Text = string.Empty;
 
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
+
             checkBox1.Checked = false;
             checkBox2.Checked = false;
 
@@ -175,6 +189,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void prisonerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -185,6 +206,8 @@ namespace PrisonDataBase
         private void prisonerLoad()
         {
             search = "";
+
+            bindingNavigator1.Visible = true;
 
             bindingNavigator1.BindingSource = prisonerBindingSource;
             dataGridView1.DataSource = prisonerBindingSource;
@@ -215,7 +238,7 @@ namespace PrisonDataBase
             dataGridView1.Columns["incarceration_date"].DisplayIndex = 1;
             dataGridView1.Columns["release_date"].DisplayIndex = 2;
             dataGridView1.Columns["number_of_article"].DisplayIndex = 3;
-            dataGridView1.Columns["cell_number"].DisplayIndex = 3;
+            dataGridView1.Columns["cell_number"].DisplayIndex = 4;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -256,6 +279,8 @@ namespace PrisonDataBase
             dateTimePicker2.Value = DateTime.Now;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -266,6 +291,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void jailerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -277,11 +309,15 @@ namespace PrisonDataBase
         {
             search = "";
 
+            bindingNavigator1.Visible = true;
+
             bindingNavigator1.BindingSource = jailerBindingSource;
             dataGridView1.DataSource = jailerBindingSource;
             label1.Text = "Jailers";
 
-            dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[0].Visible = false;
+
+            dataGridView1.Columns["jailer_id"].Visible = false;
 
             checkBox_Sort.Visible = true;
             label_Sort.Visible = true;
@@ -327,6 +363,8 @@ namespace PrisonDataBase
             dateTimePicker2.Value = DateTime.Now;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -337,6 +375,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = true;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void jailerOnShiftToolStripMenuItem_Click(object sender, EventArgs e)
@@ -347,6 +392,8 @@ namespace PrisonDataBase
         private void jailerOnShiftLoad()
         {
             search = "";
+
+            bindingNavigator1.Visible = true;
 
             bindingNavigator1.BindingSource = jaileronshiftBindingSource;
             dataGridView1.DataSource = jaileronshiftBindingSource;
@@ -371,12 +418,11 @@ namespace PrisonDataBase
                 dataGridView1.DataSource = jaileronshiftBindingSource;
             }
 
-            //dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
 
             dataGridView1.Columns["SNP"].DisplayIndex = 0;
             dataGridView1.Columns["cell_number"].DisplayIndex = 1;
             dataGridView1.Columns["shift_date"].DisplayIndex = 2;
-            dataGridView1.Columns["jailer_on_shift_id"].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -418,6 +464,8 @@ namespace PrisonDataBase
             dateTimePicker2.Value = DateTime.Now;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -428,6 +476,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void cellToolStripMenuItem_Click(object sender, EventArgs e)
@@ -438,6 +493,8 @@ namespace PrisonDataBase
         private void cellLoad()
         {
             search = "";
+
+            bindingNavigator1.Visible = true;
 
             bindingNavigator1.BindingSource = cellBindingSource;
             dataGridView1.DataSource = cellBindingSource;
@@ -481,16 +538,26 @@ namespace PrisonDataBase
             checkBox_Sort.Checked = false;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            comboBox_Cells.DropDownStyle = ComboBoxStyle.DropDownList;
             label4.Visible = true;
             comboBox_Cells.Visible = true;
             button_PrintReport.Visible = true;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void visitorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -501,6 +568,8 @@ namespace PrisonDataBase
         private void visitorLoad()
         {
             search = "";
+
+            bindingNavigator1.Visible = true;
 
             bindingNavigator1.BindingSource = visitorBindingSource;
             dataGridView1.DataSource = visitorBindingSource;
@@ -538,6 +607,8 @@ namespace PrisonDataBase
             checkBox_Sort.Checked = false;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -548,6 +619,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void visitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -559,6 +637,8 @@ namespace PrisonDataBase
         {
             search = "";
 
+            bindingNavigator1.Visible = true;
+
             bindingNavigator1.BindingSource = visitBindingSource;
             dataGridView1.DataSource = visitBindingSource;
             label1.Text = "Visits";
@@ -568,7 +648,8 @@ namespace PrisonDataBase
                 Visitor.SNP AS Visitors_SNP, Person.SNP AS Prisoners_SNP
                 FROM Visit
                 LEFT JOIN Visitor ON Visit.visitor_id = Visitor.visitor_id
-                LEFT JOIN Person ON Visit.prisoner_id = Person.person_id
+                LEFT JOIN Prisoner ON Visit.prisoner_id = Prisoner.prisoner_id
+                LEFT JOIN Person ON Prisoner.person_id = Person.person_id
             ";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -587,9 +668,8 @@ namespace PrisonDataBase
             dataGridView1.Columns["relation_to_the_prisoner"].DisplayIndex = 2;
             dataGridView1.Columns["date_of_visit"].DisplayIndex = 3;
             dataGridView1.Columns["time_of_visit"].DisplayIndex = 4;
-            dataGridView1.Columns["visit_id"].Visible = false;
 
-            //dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -636,6 +716,8 @@ namespace PrisonDataBase
             dateTimePicker2.Value = DateTime.Now;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -646,6 +728,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void incidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -656,6 +745,8 @@ namespace PrisonDataBase
         private void incidentLoad()
         {
             search = "";
+
+            bindingNavigator1.Visible = true;
 
             bindingNavigator1.BindingSource = incidentBindingSource;
             dataGridView1.DataSource = incidentBindingSource;
@@ -693,6 +784,8 @@ namespace PrisonDataBase
             checkBox_Sort.Checked = false;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -703,6 +796,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void committedIncidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -713,6 +813,8 @@ namespace PrisonDataBase
         private void committedIncidentLoad()
         {
             search = "";
+
+            bindingNavigator1.Visible = true;
 
             bindingNavigator1.BindingSource = committedincidentBindingSource;
             dataGridView1.DataSource = committedincidentBindingSource;
@@ -740,9 +842,7 @@ namespace PrisonDataBase
             dataGridView1.Columns["date_of_incident"].DisplayIndex = 1;
             dataGridView1.Columns["time_of_incident"].DisplayIndex = 2;
 
-            dataGridView1.Columns["committed_incident_id"].Visible = false;
-
-            //dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -782,6 +882,8 @@ namespace PrisonDataBase
             dateTimePicker2.Value = DateTime.Now;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -792,6 +894,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private void participantsOfTheIncidentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -803,6 +912,8 @@ namespace PrisonDataBase
         {
             search = "";
 
+            bindingNavigator1.Visible = true;
+
             bindingNavigator1.BindingSource = participantsoftheincidentBindingSource;
             dataGridView1.DataSource = participantsoftheincidentBindingSource;
             label1.Text = "Participants of the incidents";
@@ -812,7 +923,9 @@ namespace PrisonDataBase
                 Incident.incident_type AS Incident_type, Person.SNP AS Prisoners_SNP
                 FROM Participants_of_the_incident
                 LEFT JOIN Incident ON Participants_of_the_incident.committed_incident_id = Incident.incident_id
-                LEFT JOIN Person ON Participants_of_the_incident.prisoner_id = Person.person_id
+                LEFT JOIN Prisoner ON Participants_of_the_incident.prisoner_id = Prisoner.prisoner_id
+                LEFT JOIN Person ON Prisoner.person_id = Person.person_id
+
             ";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -827,6 +940,9 @@ namespace PrisonDataBase
             }
 
             dataGridView1.Columns[0].Visible = false;
+
+            dataGridView1.Columns["Prisoners_SNP"].DisplayIndex = 0;
+            dataGridView1.Columns["Incident_type"].DisplayIndex = 1;
 
             checkBox_Sort.Visible = false;
             label_Sort.Visible = false;
@@ -857,6 +973,8 @@ namespace PrisonDataBase
             checkBox_Sort.Checked = false;
 
             textBox_Search.Text = string.Empty;
+            textBox_Search.Visible = true;
+            label_Search.Visible = true;
 
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -867,6 +985,13 @@ namespace PrisonDataBase
             comboBox_Cells.Visible = false;
             button_PrintReport.Visible = false;
             button_PrintReport1.Visible = false;
+
+            bindingNavigator1.Items.Remove(bindingNavigatorAddNewItem);
+            bindingNavigator1.Items.Remove(bindingNavigatorDeleteItem);
+
+            dataGridView1.Location = new Point(12, 180);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
         }
 
         private bool edit;
@@ -1161,7 +1286,7 @@ namespace PrisonDataBase
                 visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
                 prisonDataBaseDataSet.AcceptChanges();
 
-                visitLoad();
+                visitorLoad();
             }
 
             if (bindingNavigator1.BindingSource == participantsoftheincidentBindingSource)
@@ -1249,26 +1374,17 @@ namespace PrisonDataBase
 
             else if (bindingNavigator1.BindingSource == prisonerBindingSource)
             {
-                int prisonerId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record? All dependent records will be deleted automatically.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if (!HasDependenciesForPrisoner(prisonerId))
+                if (result == DialogResult.Yes)
                 {
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    prisonerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                    prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
+                    prisonDataBaseDataSet.AcceptChanges();
 
-                    if (result == DialogResult.Yes)
-                    {
-                        prisonerTableAdapter.DeleteQuery(prisonerId);
-                        prisonerTableAdapter.Fill(prisonDataBaseDataSet.Prisoner);
-                        prisonDataBaseDataSet.AcceptChanges();
+                    prisonerLoad();
 
-                        prisonerLoad();
-
-                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("This prisoner record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
@@ -1319,7 +1435,7 @@ namespace PrisonDataBase
                 else
                 {
                     MessageBox.Show("This cell record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }  
+                }
             }
 
             if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
@@ -1356,26 +1472,17 @@ namespace PrisonDataBase
 
             if (bindingNavigator1.BindingSource == visitorBindingSource)
             {
-                int visitorId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record? All dependent records will be deleted automatically.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if (!HasDependenciesForVisitor(visitorId))
+                if (result == DialogResult.Yes)
                 {
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    visitorTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                    visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
+                    prisonDataBaseDataSet.AcceptChanges();
 
-                    if (result == DialogResult.Yes)
-                    {
-                        visitorTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                        visitorTableAdapter.Fill(prisonDataBaseDataSet.Visitor);
-                        prisonDataBaseDataSet.AcceptChanges();
+                    visitorLoad();
 
-                        visitorLoad();
-
-                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("This visitor record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
@@ -1397,27 +1504,18 @@ namespace PrisonDataBase
 
             if (bindingNavigator1.BindingSource == committedincidentBindingSource)
             {
-                int committedincidentId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record? All dependent records will be deleted automatically.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if (!HasDependenciesForCommittedIncident(committedincidentId))
+                if (result == DialogResult.Yes)
                 {
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    committed_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                    committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
+                    prisonDataBaseDataSet.AcceptChanges();
 
-                    if (result == DialogResult.Yes)
-                    {
-                        committed_incidentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                        committed_incidentTableAdapter.Fill(prisonDataBaseDataSet.Committed_incident);
-                        prisonDataBaseDataSet.AcceptChanges();
+                    committedIncidentLoad();
 
-                        committedIncidentLoad();
-
-                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
-                {
-                    MessageBox.Show("This committed incident record has dependencies and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } 
             }
 
             if (bindingNavigator1.BindingSource == incidentBindingSource)
@@ -1463,35 +1561,7 @@ namespace PrisonDataBase
 
                     if (prisonerCount > 0)
                     {
-                        return true; 
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        private bool HasDependenciesForPrisoner(int prisonerId)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString)) 
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand())
-                {
-                    command.Connection = connection;
-
-                    command.CommandText = "SELECT COUNT(*) FROM Visit WHERE prisoner_id = @prisonerId";
-                    command.Parameters.AddWithValue("@prisonerId", prisonerId);
-
-                    int visitCount = (int)command.ExecuteScalar();
-
-                    command.CommandText = "SELECT COUNT(*) FROM Participants_of_the_incident WHERE prisoner_id = @prisonerId";
-                    int participantsCount = (int)command.ExecuteScalar();
-
-                    if (visitCount > 0 || participantsCount > 0)
-                    {
-                        return true; 
+                        return true;
                     }
                 }
             }
@@ -1514,10 +1584,7 @@ namespace PrisonDataBase
 
                     int jailerOnShiftCount = (int)command.ExecuteScalar();
 
-                    command.CommandText = "SELECT COUNT(*) FROM Cell WHERE jailer_id = @jailerId";
-                    int cellCount = (int)command.ExecuteScalar();
-
-                    if (jailerOnShiftCount > 0 || cellCount > 0)
+                    if (jailerOnShiftCount > 0)
                     {
                         return true;
                     }
@@ -1546,56 +1613,6 @@ namespace PrisonDataBase
                     int jailerOnShiftCount = (int)command.ExecuteScalar();
 
                     if (prisonerCount > 0 || jailerOnShiftCount > 0)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        private bool HasDependenciesForVisitor(int visitorId)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand())
-                {
-                    command.Connection = connection;
-
-                    command.CommandText = "SELECT COUNT(*) FROM Visit WHERE visitor_id = @visitorId";
-                    command.Parameters.AddWithValue("@visitorId", visitorId);
-
-                    int visitorCount = (int)command.ExecuteScalar();
-
-                    if (visitorCount > 0)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        private bool HasDependenciesForCommittedIncident(int committedIncidentId)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand())
-                {
-                    command.Connection = connection;
-
-                    command.CommandText = "SELECT COUNT(*) FROM Participants_of_the_incident WHERE committed_incident_id = @committedIncidentId";
-                    command.Parameters.AddWithValue("@committedIncidentId", committedIncidentId);
-
-                    int committedIncidentCount = (int)command.ExecuteScalar();
-
-                    if (committedIncidentCount > 0)
                     {
                         return true;
                     }
@@ -1726,7 +1743,7 @@ namespace PrisonDataBase
                     string cellInfo = GetCellInfo(selectedCellNumber);
                     File.WriteAllText(filePath, cellInfo);
 
-                    MessageBox.Show("The text file was successfully created!");
+                    MessageBox.Show("The text file was successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -1761,7 +1778,6 @@ namespace PrisonDataBase
 
             return cellInfo;
         }
-
 
         private string GetInmatesInfo(int cellId)
         {
@@ -1950,6 +1966,11 @@ namespace PrisonDataBase
                         sqlQuery += $"hire_date >= {startDateString} AND hire_date <= {endDateString}";
                     }
 
+                    if (checkBox_Sort.Checked)
+                    {
+                        sqlQuery += " ORDER BY SNP";
+                    }
+
                     using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
                         saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
@@ -1980,7 +2001,7 @@ namespace PrisonDataBase
                                 writer.WriteLine($"\r\nDocument Save Date: {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\r\n");
                             }
 
-                            MessageBox.Show("The text file was successfully created!");
+                            MessageBox.Show("The text file was successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -1990,7 +2011,6 @@ namespace PrisonDataBase
         private void visitsOfPrisonersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             label1.Text = "Prisoners and visits";
-            bindingNavigator1.Visible = false;
 
             label_Filter.Visible = false;
             label3.Visible = false;
@@ -2014,47 +2034,44 @@ namespace PrisonDataBase
             textBox_Search.Visible = false;
             label_Sort.Visible = false;
             checkBox_Sort.Visible = false;
+            bindingNavigator1.Visible = false;
+
+            dataGridView1.Location = new Point(15, 80);
+
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
 
             string query = @"
                 DECLARE @columns NVARCHAR(MAX), @sql NVARCHAR(MAX);
 
-                SELECT @columns = STRING_AGG(QUOTENAME(prisoner_name), ', ') 
+                SELECT @columns = STRING_AGG(QUOTENAME(prisoner_name), ', ')
                 FROM (
-                    SELECT DISTINCT prisoner_name
-                    FROM (
-                        SELECT Person.SNP AS prisoner_name
-                        FROM Person
-                        INNER JOIN Prisoner ON Person.person_id = Prisoner.person_id
-                        INNER JOIN Visit ON Prisoner.prisoner_id = Visit.prisoner_id
-                    ) AS prisoners
+                    SELECT DISTINCT Person.SNP AS prisoner_name
+                    FROM Person 
+                    INNER JOIN Prisoner ON Person.person_id = Prisoner.person_id
+                    INNER JOIN Visit ON Prisoner.prisoner_id = Visit.prisoner_id
                 ) AS prisoner_names;
 
-                SET @sql = '
-                    SELECT visitor_SNP as visitor_SNP, ' + @columns + '
-                        FROM (
-                            SELECT
-                            prisoners.prisoner_name,
+                SET @sql = N'
+                    SELECT visitor_SNP, ' + @columns + ' 
+                    FROM (
+                        SELECT
+                            Person.SNP AS prisoner_name,
                             Visitor.SNP AS visitor_SNP,
-                            COUNT(*) AS count
-                        FROM
-                        (
-                            SELECT Person.SNP AS prisoner_name, Visit.prisoner_id
+                            COUNT(*) AS visit_count -- Підрахунок кількості відвідувань
                             FROM Person
                             INNER JOIN Prisoner ON Person.person_id = Prisoner.person_id
                             INNER JOIN Visit ON Prisoner.prisoner_id = Visit.prisoner_id
-                        ) AS prisoners
-                        INNER JOIN Visit ON prisoners.prisoner_id = Visit.prisoner_id
-                        INNER JOIN Visitor ON Visit.visitor_id = Visitor.visitor_id
-                        GROUP BY
-                            prisoners.prisoner_name,
-                            Visitor.SNP
-                        ) AS source
-                        PIVOT (
-                            SUM(count)
-                            FOR prisoner_name IN (' + @columns + ')
-                            ) AS pivot_table';
-                        EXEC sp_executesql @sql;
-                        ";
+                            INNER JOIN Visitor ON Visit.visitor_id = Visitor.visitor_id
+                            GROUP BY 
+                                Person.SNP,
+                                Visitor.SNP
+                    ) AS source_table
+                    PIVOT (
+                        SUM(visit_count) FOR prisoner_name IN (' + @columns + ')  
+                    ) AS pivot_table;
+                ';
+                EXEC sp_executesql @sql;
+            ";
 
             dataGridView1.DataSource = Query(ConnectionString, query);
         }
@@ -2209,7 +2226,7 @@ namespace PrisonDataBase
 
         private void checkBox_CommittedIncidentDate_CheckedChanged(object sender, EventArgs e)
         {
-            if (!checkBox_VisitDate.Checked)
+            if (!checkBox_CommittedIncidentDate.Checked)
             {
                 incidentFilter = "";
                 ApplyFilters();
@@ -2222,6 +2239,123 @@ namespace PrisonDataBase
             incidentFilter = $"date_of_incident >= #{startDate:MM/dd/yyyy}# AND date_of_incident <= #{endDate:MM/dd/yyyy}#";
 
             ApplyFilters();
+        }
+
+        private DateTime previousDateTimePicker1Value;
+        private DateTime previousDateTimePicker2Value;
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if (bindingNavigator1.BindingSource == personBindingSource)
+            {
+                if (dateTimePicker1.Value != previousDateTimePicker1Value)
+                {
+                    checkBox_BirthdayDate.Checked = false;
+                }
+                previousDateTimePicker1Value = dateTimePicker1.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == prisonerBindingSource)
+            {
+                if (dateTimePicker1.Value != previousDateTimePicker1Value)
+                {
+                    checkBox_ReleaseDate.Checked = false;
+                }
+                previousDateTimePicker1Value = dateTimePicker1.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == jailerBindingSource)
+            {
+                if (dateTimePicker1.Value != previousDateTimePicker1Value)
+                {
+                    checkBox_HireDate.Checked = false;
+                }
+                previousDateTimePicker1Value = dateTimePicker1.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
+            {
+                if (dateTimePicker1.Value != previousDateTimePicker1Value)
+                {
+                    checkBox_ShiftDate.Checked = false;
+                }
+                previousDateTimePicker1Value = dateTimePicker1.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == visitBindingSource)
+            {
+                if (dateTimePicker1.Value != previousDateTimePicker1Value)
+                {
+                    checkBox_VisitDate.Checked = false;
+                }
+                previousDateTimePicker1Value = dateTimePicker1.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == committedincidentBindingSource)
+            {
+                if (dateTimePicker1.Value != previousDateTimePicker1Value)
+                {
+                    checkBox_CommittedIncidentDate.Checked = false;
+                }
+                previousDateTimePicker1Value = dateTimePicker1.Value;
+            }     
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            if (bindingNavigator1.BindingSource == personBindingSource)
+            {
+                if (dateTimePicker2.Value != previousDateTimePicker2Value)
+                {
+                    checkBox_BirthdayDate.Checked = false;
+                }
+                previousDateTimePicker2Value = dateTimePicker2.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == prisonerBindingSource)
+            {
+                if (dateTimePicker2.Value != previousDateTimePicker2Value)
+                {
+                    checkBox_ReleaseDate.Checked = false;
+                }
+                previousDateTimePicker2Value = dateTimePicker2.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == jailerBindingSource)
+            {
+                if (dateTimePicker2.Value != previousDateTimePicker2Value)
+                {
+                    checkBox_HireDate.Checked = false;
+                }
+                previousDateTimePicker2Value = dateTimePicker2.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == jaileronshiftBindingSource)
+            {
+                if (dateTimePicker2.Value != previousDateTimePicker2Value)
+                {
+                    checkBox_ShiftDate.Checked = false;
+                }
+                previousDateTimePicker2Value = dateTimePicker2.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == visitBindingSource)
+            {
+                if (dateTimePicker2.Value != previousDateTimePicker2Value)
+                {
+                    checkBox_VisitDate.Checked = false;
+                }
+                previousDateTimePicker1Value = dateTimePicker2.Value;
+            }
+
+            else if (bindingNavigator1.BindingSource == committedincidentBindingSource)
+            {
+                if (dateTimePicker2.Value != previousDateTimePicker2Value)
+                {
+                    checkBox_CommittedIncidentDate.Checked = false;
+                }
+                previousDateTimePicker2Value = dateTimePicker2.Value;
+            }
         }
     }
 }

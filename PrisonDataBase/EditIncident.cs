@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,8 +41,48 @@ namespace PrisonDataBase
             textBox_Description.Text = description;
         }
 
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(textBox_Type.Text))
+            {
+                MessageBox.Show("Type cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (Regex.IsMatch(textBox_Type.Text, @"\d"))
+            {
+                MessageBox.Show("SNP cannot contain numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (textBox_Type.Text.Length < 3)
+            {
+                MessageBox.Show("Type must be at least 5 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(textBox_Description.Text))
+            {
+                MessageBox.Show("Description cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (textBox_Type.Text.Length < 3)
+            {
+                MessageBox.Show("Description must be at least 5 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
         private void button_OK_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput())
+            {
+                return;
+            }
+
             if (edit)
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to make these changes?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -52,7 +94,6 @@ namespace PrisonDataBase
                           id);
                     MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
 
             else

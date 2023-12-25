@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -49,6 +50,8 @@ namespace PrisonDataBase
         private void EditPerson_Load(object sender, EventArgs e)
         {
             this.personTableAdapter.Fill(this.prisonDataBaseDataSet.Person);
+
+            comboBox_Gender.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private bool IsAdult(DateTime birthDate)
@@ -69,6 +72,18 @@ namespace PrisonDataBase
                 return false;
             }
 
+            if (Regex.IsMatch(textBox_SNP.Text, @"\d"))
+            {
+                MessageBox.Show("SNP cannot contain numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (textBox_SNP.Text.Length < 5)
+            {
+                MessageBox.Show("SNP must be at least 5 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             if (dateTimePicker_DateOfBirth.Value > DateTime.Now)
             {
                 MessageBox.Show("Date of Birth cannot be in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -78,6 +93,12 @@ namespace PrisonDataBase
             if (!IsAdult(dateTimePicker_DateOfBirth.Value))
             {
                 MessageBox.Show("Person must be 18 years or older.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(comboBox_Gender.Text))
+            {
+                MessageBox.Show("Gender cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 

@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,13 +23,16 @@ namespace PrisonDataBase
         {
             InitializeComponent();
 
+            this.incidentTableAdapter.Fill(this.prisonDataBaseDataSet.Incident);
+
             edit = false;
         }
 
         private void EditCommittedIncident_Load(object sender, EventArgs e)
         {
             this.committed_incidentTableAdapter.Fill(this.prisonDataBaseDataSet.Committed_incident);
-            this.incidentTableAdapter.Fill(this.prisonDataBaseDataSet.Incident);
+
+            comboBox_Type.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public EditCommittedIncident(int id, DateTime dateOfIncident, string timeOfIncident, int type)
@@ -46,6 +50,12 @@ namespace PrisonDataBase
 
         private bool ValidateInput()
         {
+            if (dateTimePicker_IncidentDate.Value > DateTime.Now)
+            {
+                MessageBox.Show("Date of incident cannot be in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             string[] formats = { "HH:mm:ss" };
             DateTime result;
 

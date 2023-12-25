@@ -104,6 +104,12 @@ namespace PrisonDataBase
                 return false;
             }
 
+            if (capacity < 3 && selectedType.ToLower() == "multiple")
+            {
+                MessageBox.Show("The capacity for the selected cell type (multiple) should be at least 3.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
 
@@ -158,6 +164,8 @@ namespace PrisonDataBase
         private void EditCell_Load(object sender, EventArgs e)
         {
             this.cellTableAdapter.Fill(this.prisonDataBaseDataSet.Cell);
+
+            comboBox_cellType.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }
