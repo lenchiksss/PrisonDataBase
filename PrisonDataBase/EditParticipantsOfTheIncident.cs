@@ -44,7 +44,7 @@ namespace PrisonDataBase
             comboBox_Incident.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        public EditParticipantsOfTheIncident(int id, int incident, string SNP)
+        public EditParticipantsOfTheIncident(int id, string incident, string SNP)
            : this()
         {
             incidentTableAdapter.Fill(prisonDataBaseDataSet.Incident);
